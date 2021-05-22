@@ -1,0 +1,38 @@
+/*******************************************************************************
+ * Variables used throughout the theme.
+ * To adjust anything, simply edit the variables below and rebuild the theme.
+ ******************************************************************************/
+
+
+// Colors
+$red-color:           #bf616a!default;
+$red-color-dark:      #B71C1C !default;
+$orange-color:        #d08770 !default;
+$blue-color:          #5e81ac !default;
+$blue-color-dark:     #5e81ac !default;
+$cyan-color:          #88c0d0 !default;
+$light-cyan-color:    lighten($cyan-color, 25%);
+$green-color:         #a3be8c !default;
+$green-color-lime:    #B7D12A !default;
+$green-color-dark:    #a3be8c !default;
+$green-color-light:   #ddffdd !default;
+$green-color-bright:  #11D68B !default;
+$purple-color:        #b48ead !default;
+$light-purple-color:  lighten($purple-color, 25%);
+$pink-color:          #b48ead !default;
+$pink-color-light:    #ffdddd !default;
+$yellow-color:        #ebcb8b !default;
+
+$grey-color:          #434c5e!default;
+$grey-color-light:    #d8dee9;
+$grey-color-dark:     $grey-color;
+
+$white-color: #eceff4 !default;
+$black-color: #4c566a !default;
+
+
+// Theme colors
+
+$code-bg-color-light:     #81a1c1 !default;
+$code-bg-color-dark:      #2e3440 !default;
+
