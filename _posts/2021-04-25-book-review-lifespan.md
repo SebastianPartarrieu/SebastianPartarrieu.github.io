@@ -78,6 +78,10 @@ I seem to have found as many links explaining why designing these clinical trial
 - [Clinical Trials Targeting Aging and Age-Related Multimorbidity ](https://pubmed.ncbi.nlm.nih.gov/28364543/)
 - [Strategies and Challenges in Clinical Trials Targeting Human Aging](https://www.ncbi.nlm.nih.gov/pmc/articles/PMC5055653/)
 
+(EDIT, thanks Phil!): some more links for interesting podcasts and surrounding information
+- Peter Attia's podcast, the drive, [round #1](https://www.youtube.com/watch?v=edrIEC0kJv8)
+- Peter Attia's podcast, the drive, [round #2](https://www.youtube.com/watch?v=IgosGWLVUrU)
+- There are plenty of study in mice, some of which are regrouped under the [Interventions Testing Program](https://www.nia.nih.gov/research/dab/interventions-testing-program-itp), sponsored by the National Institute on Aging
 
 # Conclusion
 
