@@ -39,7 +39,7 @@ Going back to non-invasive BMIs, a few prominent examples include Facebook's Rea
 
 The SoA in invasive BMIs is changing rapidly and quite exciting. I have personally worked with some ultrasoft mesh nanoelectronics which have a range of properties making them good candidates for the next generation of invasive technologies. This is in the same pursuit of scalability and durability that has marked the historical developments of BMIs. Be sure to go over to the publications page to check that out ;). There is also [Neuralink's system](https://neuralink.com/approach/) which can supposedly track thousands of neurons and uses soft, precisely placed flexible threads. Given the number of neurons in the brain (~100 billion) this still seems to fall short of what we would need to gain system-wide understanding and tracking but is nonetheless exciting.
 
-Ultimately, although we have already been able to achieve remarkable milestones ({% cite anumanchipalli_speech_2019 --file BMI_tech_review.bib  %}, {% cite willett_high-performance_2021 --file BMI_tech_review.bib  %}) in BMI development thanks to fixed arrays, the future seems to lie within these softer, denser technologies which will need to be accompanied by more scalable decoding algorithms.
+Ultimately, although we have already been able to achieve remarkable milestones, {% cite anumanchipalli_speech_2019 --file BMI_tech_review.bib  %}, {% cite willett_high-performance_2021 --file BMI_tech_review.bib  %}) in BMI development thanks to fixed arrays, the future seems to lie within these softer, denser technologies which will need to be accompanied by more scalable decoding algorithms.
 
 
 
