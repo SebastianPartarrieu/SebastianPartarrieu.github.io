@@ -8,7 +8,7 @@ profile:
   align: right
   image: personal_pic.jpg
   address: >
-    <p>Freshly arrived in NY!</p>
+    <p>Freshly arrived back in Paris!</p>
 
 news: true  # includes a list of news items
 selected_papers: false # includes a list of papers marked as "selected={true}"
