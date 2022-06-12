@@ -3,7 +3,7 @@ layout: page
 permalink: /publications/
 title: publications
 description: publications in reversed chronological order. They say it's good to have clear goals, one of mine is to start filling this page up with some good quality research!
-years: [2021]
+years: [2022, 2021]
 nav: true
 ---
 
