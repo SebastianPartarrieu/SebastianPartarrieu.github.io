@@ -1,7 +1,7 @@
 ---
 layout: page
 title: Projects
-permalink: /Projects/
+permalink: /projects/
 description: A growing collection of projects I've carried out.
 nav: true
 ---

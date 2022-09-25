@@ -12,7 +12,7 @@ profile:
 
 news: true  # includes a list of news items
 selected_papers: false # includes a list of papers marked as "selected={true}"
-social: false  # includes social icons at the bottom of the page
+social: True  # includes social icons at the bottom of the page
 ---
 
 Hey there. I'm a French and Chilean master's student studying Applied Mathematics and Machine Learning in Paris. I'm pursuing a double master's degree between [Mines de Paris](https://www.minesparis.psl.eu/) and the [MVA](https://www.master-mva.com/). If those names don't sound familiar - go check them out, I promise they're very good schools!
