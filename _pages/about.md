@@ -19,6 +19,6 @@ Hey there. I'm a French and Chilean master's student studying Applied Mathematic
 
 I write code, read and think a lot. Currently, I've spent a fair amount of thinking time on artificial intelligence, neuroscience (mostly computational) and personalized medicine in oncology. Following all these interests, I took a year off before the final year of my dual master's: I've just finished back to back research internship within the [Jia Liu Group](https://liulab.seas.harvard.edu/) and the [Landau lab](https://www.landaulab.org/) before joining [Owkin](https://owkin.com/).
 
-Outside of this, I love: climbing :mountain:, playing tennis :tennis:, skiing :ski:, travelling :earth_americas:, observing the night sky :milky_way:, being bad at chess :crown: and enjoying a good party once in a while.
+Outside of this, I love: climbing :mountain:, playing tennis :tennis:, skiing :ski:, travelling :earth_americas:, observing the night sky :milky_way:, and enjoying a good party once in a while.
 
 Finally, I'm planning on applying to PhDs this Fall. I will be documenting the process, any tips & tricks are welcome!
