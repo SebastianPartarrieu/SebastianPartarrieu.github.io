@@ -5,6 +5,7 @@ description: A mobile application allowing customers to discover small local sto
 img: /assets/img/mon_quartier_logo.png
 importance: 3
 category: work
+github: https://github.com/SebastianPartarrieu/Promotion
 ---
 
 ## Why the app?

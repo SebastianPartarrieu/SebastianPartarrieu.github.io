@@ -5,6 +5,7 @@ description: A VR application powered by deep learning built to plunge users int
 img: /assets/img/through_artists_eyes.png
 importance: 2
 category: work
+github: https://github.com/SebastianPartarrieu/ThroughArtistsEyes
 ---
 
 ## A brief overview 

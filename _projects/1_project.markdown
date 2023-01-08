@@ -3,8 +3,9 @@ layout: page
 title: Natural Gas Storage Valuation
 description: Three complementary modules to properly valuate a natural gas storage facility.
 img: /assets/img/e_cube.jpg
-importance: 1
+importance: 4
 category: work
+github: https://github.com/SebastianPartarrieu/mines_strat_gaz_nat
 ---
 
 This [project](https://github.com/SebastianPartarrieu/mines_strat_gaz_nat) was carried out during a computer science course within the Mines ParisTech Cycle Ingénieur Civil and in collaboration with [E_Cube](https://www.linkedin.com/company/e-cube-strategy-consultants/) (a consultancy specialized in the energy sector) along with two other students of Mines ParisTech.
