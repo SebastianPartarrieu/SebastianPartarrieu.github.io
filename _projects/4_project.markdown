@@ -1,7 +1,7 @@
 ---
 layout: page
-title: A look at Graph Transformers
-description: A deep dive into graph transformers, what has motivated the architecture, how they work and what are the limitations?
+title: Graph Transformers
+description: A deep dive into GTs, what has motivated the architecture, how they work and the limitations.
 img: /assets/img/cluster_example.png
 importance: 1
 category: work

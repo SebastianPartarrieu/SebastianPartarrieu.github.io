@@ -1,7 +1,7 @@
 ---
 layout: page
 title: Through artists' eyes
-description: A VR application powered by deep learning built to plunge users into the fascinating worlds of Van Gogh, Kirchner, Monet and many others.
+description: A VR application powered by deep learning built to plunge users into the fascinating worlds of art.
 img: /assets/img/through_artists_eyes.png
 importance: 2
 category: work

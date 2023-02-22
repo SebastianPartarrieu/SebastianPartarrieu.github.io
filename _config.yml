@@ -66,8 +66,8 @@ panelbear_analytics: XXXXXXXXX # panelbear analytics site ID
 # Blog
 # -----------------------------------------------------------------------------
 
-blog_name: Ergodicity in Thought # your blog must have a name for it to show up in the nav bar
-blog_description: A mix & match of random ideas that hopefully, over time, will explore a large proportion of the space of ideas.
+blog_name: Drifting Thoughts # your blog must have a name for it to show up in the nav bar
+blog_description: A mix & match of random posts
 permalink: /blog/:year/:title/
 
 # Pagination
