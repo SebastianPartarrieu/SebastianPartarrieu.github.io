@@ -8,10 +8,8 @@ tags: books
 
 # It's a good book ...
 If you enjoy thinking about possible futures and indulging in science fiction you may have come across the idea that, one day, science will help us venture beyond our biological barriers and extend our lifespans indefinitely. While David Sinclair doesn't seem to suggest this will happen just yet (contrary to some more [outspoken residents](https://www.businessinsider.com/googles-chief-futurist-thinks-we-could-start-living-forever-by-2029-2016-4?IR=T) of Silicon Valley), his book Lifespan, Why we Age and Why We Don't Have To, elegantly introduces the reader to his information theory of aging and what we may do to be able to slow it down before eventually getting rid of this **disease** altogether. And yes, it is Dr. Sinclair's view that aging is a disease and should be treated as such, which I'll get into below. He also covers a host of ethical and societal considerations throughout the book whilst summarizing a lot of the [research](https://sinclair.hms.harvard.edu/people/david-sinclair) he has conducted over the past years. Personally, I read the book adamantly and it has inspired me to read more about the field of aging keep up to date with the research in the field.
-<div class="row">
-    <div class="col-sm mt-3 mt-md-0">
+<div class="row justify-content-sm-center">
         <img class="img-fluid rounded z-depth-1" src="{{ '/assets/img/lifespan.jpg' | relative_url }}" alt="" title="example image" width="200" height="400"/>
-    </div>
 </div>
 <div class="caption">
     Wow, a book cover! (On an unrelated note his book cover looks like a plot in seaborn... maybe I should spend less time looking at jupyter notebooks)

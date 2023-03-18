@@ -4,7 +4,7 @@ title: "BMI (hardware) review"
 date: 2021-08-21 11:12:00-0400
 description: A minimalist review of Brain Machine Interface (BMI) technology 
 bibliography: BMI_tech_review.bib
-tags: bioengineering
+tags: bioengineering papers
 ---
 
 # Introduction
