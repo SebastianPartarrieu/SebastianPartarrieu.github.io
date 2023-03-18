@@ -108,6 +108,18 @@
           
           
           
+          
+          
+          
+          
+          
+          
+          
+          
+          
+          
+          
+          
           <li class="nav-item ">
               <a class="nav-link" href="/projects/">
                 Projects
@@ -128,8 +140,16 @@
           
           
           
-            <div class = "toggle-container">
-              <a id = "light-toggle">
+          
+          
+          
+          
+          
+          
+          
+          
+            <div class="toggle-container">
+              <a id="light-toggle">
                   <i class="fas fa-moon"></i>
                   <i class="fas fa-sun"></i>
               </a>
@@ -148,31 +168,50 @@
     <div class="container mt-5">
       
 
+
+
+
+
 <div class="post">
 
   <header class="post-header">
     <h1 class="post-title">Published! New brain-machine interface design</h1>
     <p class="post-meta">February 20, 2023</p>
+    <p class="post-tags">
+      <a href="/blog/2023"> <i class="fas fa-calendar fa-sm"></i> 2023 </a>
+      
+        ·  
+        
+        <a href="/blog/tag/math">
+          <i class="fas fa-hashtag fa-sm"></i> math</a>  
+          
+        <a href="/blog/tag/bioengineering">
+          <i class="fas fa-hashtag fa-sm"></i> bioengineering</a>  
+          
+      
+
+      
+    </p>
   </header>
 
   <article class="post-content">
-    <p>After months of hard work, <a href="https://www.nature.com/articles/s41593-023-01267-x">the manuscript</a> <em>Tracking neural activity from the same cells during the entire adult life of mice</em> is now finally available in Nature Neuroscience! This work was conducted by the <a href="https://liulab.seas.harvard.edu/">Jia Liu Group</a> and I was lucky to be a part of the effort during a six-month stint there. <strong>Disclaimer</strong>: as I worked mostly on the data analysis / machine-learning side of things, I probably won’t cover the paper comprehensively - feel free to go check it out if you want to see the real deal. In addition, the goal here is to provide a somewhat concise overview of the paper, so don’t expect the nitty gritty details. Finally, you can also have a look at this <a href="https://twitter.com/ganoopyliujia/status/1627712813610471425">Twitter thread</a> from Pr. Liu himself going through some of the main contributions of the paper.</p>
+    <p>After months of hard work, <a href="https://www.nature.com/articles/s41593-023-01267-x" target="_blank" rel="noopener noreferrer">the manuscript</a> <em>Tracking neural activity from the same cells during the entire adult life of mice</em> is now finally available in Nature Neuroscience! This work was conducted by the <a href="https://liulab.seas.harvard.edu/" target="_blank" rel="noopener noreferrer">Jia Liu Group</a> and I was lucky to be a part of the effort during a six-month stint there. <strong>Disclaimer</strong>: as I worked mostly on the data analysis / machine-learning side of things, I probably won’t cover the paper comprehensively - feel free to go check it out if you want to see the real deal. In addition, the goal here is to provide a somewhat concise overview of the paper, so don’t expect the nitty gritty details. Finally, you can also have a look at this <a href="https://twitter.com/ganoopyliujia/status/1627712813610471425" target="_blank" rel="noopener noreferrer">Twitter thread</a> from Pr. Liu himself going through some of the main contributions of the paper.</p>
 
 <h2 id="pitch-your-paper">Pitch your paper</h2>
-<p><a href="https://sebastianpartarrieu.github.io/blog/2021/BMI-techonology-review/">Brain-machine interface (BMI) hardware</a> comes in many shapes and sizes. As you may have noticed, this technology isn’t widespread yet which suggests a number of challenges remain to be solved. One important problem is probe drift: if you stick a small metal rod into someone’s brain it turns out that the rod doesn’t stay where you wanted. Instead, it slowly drifts over time causing damage along the way. This is a nuisance as the rod is what captures the electrical activity of your neurons, if it moves, you aren’t recording the same neurons anymore. And if you don’t record the same neurons stably over time, you can’t train effective algorithms to decode the underlying neural activity. You can <a href="https://www.nature.com/articles/s41551-020-0542-9">try and fix</a> this instability algorithmically, but there is only so much you can accomplish if the underlying signal isn’t stable. Another source of instability is that sticking a metal rod inside your brain provokes an immune response which means that immune cells will come and agglomerate around the probe. This also diminishes your ability to faithfully capture the underlying activity. <strong>This is where this paper and technology comes in</strong>, what if there’s an alternative design to the metal rod? It turns out that advances in electronics mean that flexible mesh <a href="https://www.nature.com/articles/s41928-022-00913-9">intefaces</a> are a viable solution. Essentially, flexible grid-like brain-machine interfaces can be precisely implanted and they do not suffer from the two shortcomings mentioned above. Their position doesn’t drift over time as neurons can weave themselves through the grid leading to a truly integrated interface and the immune response is relatively minor. The main contribution of the paper is demonstrating this within multiple mice and over a very long time period.</p>
+<p><a href="https://sebastianpartarrieu.github.io/blog/2021/BMI-techonology-review/">Brain-machine interface (BMI) hardware</a> comes in many shapes and sizes. As you may have noticed, this technology isn’t widespread yet which suggests a number of challenges remain to be solved. One important problem is probe drift: if you stick a small metal rod into someone’s brain it turns out that the rod doesn’t stay where you wanted. Instead, it slowly drifts over time causing damage along the way. This is a nuisance as the rod is what captures the electrical activity of your neurons, if it moves, you aren’t recording the same neurons anymore. And if you don’t record the same neurons stably over time, you can’t train effective algorithms to decode the underlying neural activity. You can <a href="https://www.nature.com/articles/s41551-020-0542-9" target="_blank" rel="noopener noreferrer">try and fix</a> this instability algorithmically, but there is only so much you can accomplish if the underlying signal isn’t stable. Another source of instability is that sticking a metal rod inside your brain provokes an immune response which means that immune cells will come and agglomerate around the probe. This also diminishes your ability to faithfully capture the underlying activity. <strong>This is where this paper and technology comes in</strong>, what if there’s an alternative design to the metal rod? It turns out that advances in electronics mean that flexible mesh <a href="https://www.nature.com/articles/s41928-022-00913-9" target="_blank" rel="noopener noreferrer">intefaces</a> are a viable solution. Essentially, flexible grid-like brain-machine interfaces can be precisely implanted and they do not suffer from the two shortcomings mentioned above. Their position doesn’t drift over time as neurons can weave themselves through the grid leading to a truly integrated interface and the immune response is relatively minor. The main contribution of the paper is demonstrating this within multiple mice and over a very long time period.</p>
 
 <h2 id="deepish-dive">Deep(ish) dive</h2>
-<p>Two main mesh interface designs were tested: the first is a 32 or 16-channel sparse electrode layout (Fig. 1a of the paper) and the second is a tetrode-like electrode array which conserves the mesh structure (Fig. 4a). One of the main benefits of the tetrode-like array is that the densely packed electrodes on one tetrode will record the same neurons simultaneously and this improves the accuracy of the <a href="http://www.scholarpedia.org/article/Spike_sorting#:~:text=Spike%20sorting%20is%20the%20grouping,activity%20of%20different%20putative%20neurons.">spike sorting</a>. Indeed, if you have four channels recording one neuron, that electrical activity is seen from four different sites and each site will record a slighly different amplitude and shape due to its relative position with respect to the firing neuron. Having this multitude of information dramatically improves the identification of individual neurons. So, we tested both designs across multiple experiments which provided an abundance of data. The two main experimental conditions consisted of (i) recording spontaneous activity (the mice move around freely) and (ii) behavior-dependent activity within the visual cortex (the mice stay fixed and are shown static and dynamic grating stimuli - lines on a screen). The second set of experimental conditions are essentially a safeguard to make sure the interface is <em>really</em> stable over time and we weren’t just lucky. This is because neurons in the primary visual cortex show fairly different responses to different gratings. This means showing a specific orientation of the lines on the screen will elicit a response from only a few neurons. If you vary the orientation and record the corresponding neurons while repeating this over multiple months you can be pretty sure that consistent activity with similar waveforms means BMI stability, which is the whole point!</p>
+<p>Two main mesh interface designs were tested: the first is a 32 or 16-channel sparse electrode layout (Fig. 1a of the paper) and the second is a tetrode-like electrode array which conserves the mesh structure (Fig. 4a). One of the main benefits of the tetrode-like array is that the densely packed electrodes on one tetrode will record the same neurons simultaneously and this improves the accuracy of the <a href="http://www.scholarpedia.org/article/Spike_sorting#:~:text=Spike%20sorting%20is%20the%20grouping,activity%20of%20different%20putative%20neurons." target="_blank" rel="noopener noreferrer">spike sorting</a>. Indeed, if you have four channels recording one neuron, that electrical activity is seen from four different sites and each site will record a slighly different amplitude and shape due to its relative position with respect to the firing neuron. Having this multitude of information dramatically improves the identification of individual neurons. So, we tested both designs across multiple experiments which provided an abundance of data. The two main experimental conditions consisted of (i) recording spontaneous activity (the mice move around freely) and (ii) behavior-dependent activity within the visual cortex (the mice stay fixed and are shown static and dynamic grating stimuli - lines on a screen). The second set of experimental conditions are essentially a safeguard to make sure the interface is <em>really</em> stable over time and we weren’t just lucky. This is because neurons in the primary visual cortex show fairly different responses to different gratings. This means showing a specific orientation of the lines on the screen will elicit a response from only a few neurons. If you vary the orientation and record the corresponding neurons while repeating this over multiple months you can be pretty sure that consistent activity with similar waveforms means BMI stability, which is the whole point!</p>
 
 <p>Anyway, the main idea was to try and actually implant these things and see what happens. The first findings were that (Fig. 2) the mesh electronics actually integrate with the neuronal networks in the brain. Some pretty neat fluorescence imaging shows exactly what that looks like as well as how there are relatively few immune cells that come and disturb the electrode’s surroundings. This is encouraging as it suggests that these interfaces have a fighting chance of remaining stable over long time periods. So, quite naturally we looked at how we could quantify the stability of the recordings. We did so in both experimental conditions and the results were very promising.</p>
 
 <h4 id="data-processing-pipeline">Data processing pipeline</h4>
-<p>The data processing, signal stability and ML for unbiased signal analysis were my main areas of focus when participating in the project. The pipeline to process the recordings looks roughly like this. You start from a bunch of voltage time series sampled at 10kHz recorded for 10-30 min a few times a month for several months. You then do some filtering and processing before extracting the actual spiking events, i.e when a neuron is firing, by taking all the points above a certain voltage value and selecting the values around the threshold crossing. This gives you a big matrix bordering on a few million rows of potential spiking events for each electrode with the associated timestamp of each event. At this point, you would really like to sort the events by neuron. There are plenty of great ways of doing spike sorting but we chose to use <a href="https://mountainsort.readthedocs.io/en/latest/">MountainSort</a>. Once you’ve assigned putative units to spiking events you can start doing stability quantification. We focused on multiplying different approaches of testing the stability of the recording as this is one of the main claims of the paper. I coded most of the data processing in python and used <a href="https://spikeinterface.readthedocs.io/en/latest/overview.html">python wrappers</a> to some MATLAB and C++ code.</p>
+<p>The data processing, signal stability and ML for unbiased signal analysis were my main areas of focus when participating in the project. The pipeline to process the recordings looks roughly like this. You start from a bunch of voltage time series sampled at 10kHz recorded for 10-30 min a few times a month for several months. You then do some filtering and processing before extracting the actual spiking events, i.e when a neuron is firing, by taking all the points above a certain voltage value and selecting the values around the threshold crossing. This gives you a big matrix bordering on a few million rows of potential spiking events for each electrode with the associated timestamp of each event. At this point, you would really like to sort the events by neuron. There are plenty of great ways of doing spike sorting but we chose to use <a href="https://mountainsort.readthedocs.io/en/latest/" target="_blank" rel="noopener noreferrer">MountainSort</a>. Once you’ve assigned putative units to spiking events you can start doing stability quantification. We focused on multiplying different approaches of testing the stability of the recording as this is one of the main claims of the paper. I coded most of the data processing in python and used <a href="https://spikeinterface.readthedocs.io/en/latest/overview.html" target="_blank" rel="noopener noreferrer">python wrappers</a> to some MATLAB and C++ code.</p>
 
 <h4 id="quantifying-signal-stability-in-lifetime-recordings">Quantifying signal stability in lifetime recordings</h4>
 <p>What is the easiest way to test signal stability? Well, since you have waveforms over time that have been attributed to one neuron, you can simply see if there is change. As we saw earlier, the relative position of the neuron with respect to the electrode is proportional to the amplitude of the recorded signal. If the electrode drifts over time, this is visible when looking at the amplitude of the recorded neurons which will decrease as the electrode moves further away (or increase if it moves closer). So, we can extract the amplitude of each waveform and compare the results month by month. Interestingly, with the tetrode-like array, since you have multiple electrodes recording the same neuron the amplitude shift is enough to describe the electrode displacement fairly precisely. Of course, there are lots of other features we can extract from the waveform other than the amplitude, so we compare all of these to have a comprehensive approach. We essentially found that there was very little variation over time, whichever feature you decided to look at.</p>
 
-<p>Now, the problem is that maybe the features we chose in the first place aren’t the right ones. Maybe they don’t describe the waveform completely. Or perhaps, the electrode is drifting slightly but the nearby neurons have similar waveform shapes and so we aren’t capturing this drift correctly as the spike sorting didn’t work correctly and these neurons were assigned the same label. To respond to these questions, we chose to perform dimensionality reduction on the waveforms of each neuron and visualize the evolution over time of all the recorded spikes (Fig. 4d &amp; Fig. 6a). <a href="https://pair-code.github.io/understanding-umap/">UMAP</a> performs the dimensionality reduction by building a high-dimensional graph representation of the data and optimizing an objective leading to a lower-dimensional graph which is structurally similar to the first one. In the context of this paper, the lower-dimensional representation is an unbiased way of selecting “features” (UMAP dimensions) which will allow us to quantify how the signal changes over time. Once again, we observed very stable clusters suggesting minimal electrode drift.</p>
+<p>Now, the problem is that maybe the features we chose in the first place aren’t the right ones. Maybe they don’t describe the waveform completely. Or perhaps, the electrode is drifting slightly but the nearby neurons have similar waveform shapes and so we aren’t capturing this drift correctly as the spike sorting didn’t work correctly and these neurons were assigned the same label. To respond to these questions, we chose to perform dimensionality reduction on the waveforms of each neuron and visualize the evolution over time of all the recorded spikes (Fig. 4d &amp; Fig. 6a). <a href="https://pair-code.github.io/understanding-umap/" target="_blank" rel="noopener noreferrer">UMAP</a> performs the dimensionality reduction by building a high-dimensional graph representation of the data and optimizing an objective leading to a lower-dimensional graph which is structurally similar to the first one. In the context of this paper, the lower-dimensional representation is an unbiased way of selecting “features” (UMAP dimensions) which will allow us to quantify how the signal changes over time. Once again, we observed very stable clusters suggesting minimal electrode drift.</p>
 
 <h4 id="tracking-age-associated-single-unit-waveform-changes">Tracking age-associated single-unit waveform changes</h4>
 <p>You may be thinking, great, we have a stable BMI but what’s the point? Well in this part of the paper we provided one of the many types of analysis this technology enables. We observed slow age-related neuron electrophysiological change. Although this analysis was fairly rudimentary (based on PCA and ‘pseudotime’ analysis, a framework taken from the single-cell community), it shows how stable BMIs can be leveraged to study long-term changes in brain activity. Ultimately, it would be great to see this techonology used to study development &amp; learning, neurodegeneration and age-related cognitive decline.</p>
@@ -182,10 +221,14 @@
 
 <h2 id="miscellaneous-links">Miscellaneous Links</h2>
 <ul>
-  <li><a href="https://axoft.us/">Axoft</a>: a company spun-out of the Liu lab by Paul LeFloch working on getting similar interfaces closer to clinical applications</li>
-  <li><a href="https://www.nature.com/articles/s41928-022-00913-9">Review</a> (linked to above) going over some of the main trends in flexible electronics</li>
-  <li><a href="https://www.science.org/doi/10.1126/science.abf4588">Neuropixel 2.0</a>: one of the most used current rigid BMIs</li>
-  <li><a href="https://neuralink.com/approach/">Neuralink</a>: Musk’s company trying to build commercial BMIs</li>
+  <li>
+<a href="https://axoft.us/" target="_blank" rel="noopener noreferrer">Axoft</a>: a company spun-out of the Liu lab by Paul LeFloch working on getting similar interfaces closer to clinical applications</li>
+  <li>
+<a href="https://www.nature.com/articles/s41928-022-00913-9" target="_blank" rel="noopener noreferrer">Review</a> (linked to above) going over some of the main trends in flexible electronics</li>
+  <li>
+<a href="https://www.science.org/doi/10.1126/science.abf4588" target="_blank" rel="noopener noreferrer">Neuropixel 2.0</a>: one of the most used current rigid BMIs</li>
+  <li>
+<a href="https://neuralink.com/approach/" target="_blank" rel="noopener noreferrer">Neuralink</a>: Musk’s company trying to build commercial BMIs</li>
 </ul>
 
 
@@ -202,12 +245,12 @@
     
 <footer class="sticky-bottom mt-5">
   <div class="container">
-    &copy; Copyright 2023 Sebastian A. Partarrieu.
-    Powered by <a href="http://jekyllrb.com/" target="_blank">Jekyll</a> with <a href="https://github.com/alshedivat/al-folio">al-folio</a> theme. Hosted by <a href="https://pages.github.com/" target="_blank">GitHub Pages</a>.
+    © Copyright 2023 Sebastian A. Partarrieu.
+    Powered by <a href="http://jekyllrb.com/" target="_blank" rel="noopener noreferrer">Jekyll</a> with <a href="https://github.com/alshedivat/al-folio" target="_blank" rel="noopener noreferrer">al-folio</a> theme. Hosted by <a href="https://pages.github.com/" target="_blank" rel="noopener noreferrer">GitHub Pages</a>.
 
     
     
-    Last updated: February 22, 2023.
+    Last updated: March 19, 2023.
     
   </div>
 </footer>

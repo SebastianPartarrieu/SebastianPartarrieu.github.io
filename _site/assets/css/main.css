@@ -112,9 +112,15 @@ footer.fixed-bottom a:hover { color: var(--global-theme-color); text-decoration:
 
 footer.sticky-bottom { border-top: 1px solid #d8dee9; padding-top: 40px; padding-bottom: 40px; font-size: 0.9rem; }
 
-.header-bar { border-bottom: 1px solid #d8dee9; text-align: center; padding-top: 2rem; padding-bottom: 5rem; }
+.header-bar { border-bottom: 1px solid #d8dee9; text-align: center; padding-top: 2rem; padding-bottom: 3rem; }
 
 .header-bar h1 { color: var(--global-theme-color); font-size: 5rem; }
+
+.tag-list { border-bottom: 1px solid var(--global-divider-color); text-align: center; padding-top: 1rem; }
+
+.tag-list ul { justify-content: center; display: flow-root; }
+
+.tag-list ul p, .tag-list ul li { list-style: none; display: inline-block; padding: 1rem 0.5rem; color: var(--global-text-color-light); }
 
 .post-list { margin: 0; margin-bottom: 40px; padding: 0; }
 

@@ -108,6 +108,18 @@
           
           
           
+          
+          
+          
+          
+          
+          
+          
+          
+          
+          
+          
+          
           <li class="nav-item ">
               <a class="nav-link" href="/projects/">
                 Projects
@@ -128,8 +140,16 @@
           
           
           
-            <div class = "toggle-container">
-              <a id = "light-toggle">
+          
+          
+          
+          
+          
+          
+          
+          
+            <div class="toggle-container">
+              <a id="light-toggle">
                   <i class="fas fa-moon"></i>
                   <i class="fas fa-sun"></i>
               </a>
@@ -154,21 +174,21 @@
   </header>
 
   <article>
-    <p><em>This project was conducted as part of the <a href="https://www.master-mva.com/cours/geometric-data-analysis/">Geometric Data Analysis</a> course of the <a href="https://www.master-mva.com/">MVA</a> master’s degree. You can find all the code <a href="https://github.com/SebastianPartarrieu/graph-transformer-explr">here</a> and the original report Emma Bou Hanna &amp; I wrote <a href="https://github.com/SebastianPartarrieu/graph-transformer-explr/blob/master/docs/Final_project_report_BouHanna_Partarrieu.pdf">here</a>. What follows is largely taken from the project report.</em></p>
+    <p><em>This project was conducted as part of the <a href="https://www.master-mva.com/cours/geometric-data-analysis/" target="_blank" rel="noopener noreferrer">Geometric Data Analysis</a> course of the <a href="https://www.master-mva.com/" target="_blank" rel="noopener noreferrer">MVA</a> master’s degree. You can find all the code <a href="https://github.com/SebastianPartarrieu/graph-transformer-explr" target="_blank" rel="noopener noreferrer">here</a> and the original report Emma Bou Hanna &amp; I wrote <a href="https://github.com/SebastianPartarrieu/graph-transformer-explr/blob/master/docs/Final_project_report_BouHanna_Partarrieu.pdf" target="_blank" rel="noopener noreferrer">here</a>. What follows is largely taken from the project report.</em></p>
 
 <div class="row justify-content-sm-center">
     <div class="col">
-        <img class="img-fluid rounded z-depth-1" src="/assets/img/cluster_example.png" alt="" title="Cluster ex." width="300" height="300" />
+        <img class="img-fluid rounded z-depth-1" src="/assets/img/cluster_example.png" alt="" title="Cluster ex." width="300" height="300">
     </div>
     <div class="col">
-        <img class="img-fluid rounded z-depth-1" src="/assets/img/Cora_train.png" alt="" title="Cora ex." width="300" height="300" />
+        <img class="img-fluid rounded z-depth-1" src="/assets/img/Cora_train.png" alt="" title="Cora ex." width="300" height="300">
     </div>
     <div class="w-100"></div>
     <div class="col">
-        <img class="img-fluid rounded z-depth-1" src="/assets/img/PubMed_train.png" alt="" title="Pubmed ex." width="300" height="300" />
+        <img class="img-fluid rounded z-depth-1" src="/assets/img/PubMed_train.png" alt="" title="Pubmed ex." width="300" height="300">
     </div>
     <div class="col">
-        <img class="img-fluid rounded z-depth-1" src="/assets/img/pattern_example.png" alt="" title="Pattern ex." width="300" height="300" />
+        <img class="img-fluid rounded z-depth-1" src="/assets/img/pattern_example.png" alt="" title="Pattern ex." width="300" height="300">
     </div>
 </div>
 <div class="caption">
@@ -186,8 +206,8 @@
 <p>Both graph representation learning and prediction problems have improved at a rapid pace over the past decades. Traditional approaches in graph representation learning first relied on  extracting summary graph statistics <a class="citation" href="#graph_stats">(Bhagat et al., 2011)</a>, and features or using kernel functions <a class="citation" href="#graph_kernels">(Vishwanathan et al., 2008)</a>. Kernel methods use kernel functions as a measure of similarity between objects of the input space. On graphs, these kernels can take many forms and can operate on elements of the graph or the graphs themselves. However, although some of these methods have been shown to be computationally efficient, pre-engineered features or pre-picked kernel functions have very strong inductive bias and are inflexible. Much like in non-graph machine-learning, the ability to learn encoded representations rather than extracting features by hand has become a sought after property of modern algorithms. These algorithms learning encoded representations vary from factorization-based approaches using laplacian eigenmaps <a class="citation" href="#dietterich_laplacian_2002">(Belkin &amp; Niyogi, 2001)</a> to random-walk based approaches such as node2vec <a class="citation" href="#grover_node2vec_2016">(Grover &amp; Leskovec, 2016)</a> and finally deep-learning based methods <a class="citation" href="#gnn_model">(Scarselli et al., 2009)</a> one of the most recent ones being the main work focused on here <a class="citation" href="#graph_transformers">(Dwivedi &amp; Bresson, 2020)</a>.</p>
 
 <h3 id="problem-definition">Problem definition</h3>
-<p>We define a graph as a set of nodes and edges \(G = (V, E)\), with \(E \subseteq \{ (x, y) | (x, y) \in V^2, x\neq y \}\). We first consider homogeneous weighted (single type of node and edge) graphs (at this point, no distinction is made between directed/undirected). Each node \(i\) is characterized using a vector \(x_i \in \mathbb{R}^{d_f}\), \(d_f\in\mathbb{N}^*\) being the number of features, and a discrete or continuous label \(y_i\). For a graph with \(|V| = N\) nodes, we denote \(X \in \mathbb{R}^{N \times d}\) the node feature matrix, \(y \in \mathcal{Y}\) the node labels, \(A \in \mathbb{R}^{N \times N}\) the adjacency matrix, where \(A_{ij} = 1\) if \((i, j)\) or \((j, i) \in E\) and \(0\) if not and \((\beta_{ij})_{i, j \in [\![1, N]\!]} \in \mathbb{R}^{d_e}\), \(d_e\in\mathbb{N}^*\) the edge features. We consider two main types of graph learning problems in this report: node classification (an instance of node-wise problems) and graph regression (an instance of graph-wise problems). <br />
-Given \(X\), \(A\) and \(\beta_{i, j}\), node classification with m discrete classes consists of predicting \(y \in \{0, 1\}^{N \times m}\), the one-hot encoding of our node labels. Graph regression, on the other hand, aims at predicting a single scalar value \(y \in \mathbb{R}\). <br />
+<p>We define a graph as a set of nodes and edges \(G = (V, E)\), with \(E \subseteq \{ (x, y) | (x, y) \in V^2, x\neq y \}\). We first consider homogeneous weighted (single type of node and edge) graphs (at this point, no distinction is made between directed/undirected). Each node \(i\) is characterized using a vector \(x_i \in \mathbb{R}^{d_f}\), \(d_f\in\mathbb{N}^*\) being the number of features, and a discrete or continuous label \(y_i\). For a graph with \(|V| = N\) nodes, we denote \(X \in \mathbb{R}^{N \times d}\) the node feature matrix, \(y \in \mathcal{Y}\) the node labels, \(A \in \mathbb{R}^{N \times N}\) the adjacency matrix, where \(A_{ij} = 1\) if \((i, j)\) or \((j, i) \in E\) and \(0\) if not and \((\beta_{ij})_{i, j \in [\![1, N]\!]} \in \mathbb{R}^{d_e}\), \(d_e\in\mathbb{N}^*\) the edge features. We consider two main types of graph learning problems in this report: node classification (an instance of node-wise problems) and graph regression (an instance of graph-wise problems). <br>
+Given \(X\), \(A\) and \(\beta_{i, j}\), node classification with m discrete classes consists of predicting \(y \in \{0, 1\}^{N \times m}\), the one-hot encoding of our node labels. Graph regression, on the other hand, aims at predicting a single scalar value \(y \in \mathbb{R}\). <br>
 To solve these two learning problems (amongst others), geometric deep learning <a class="citation" href="#Bronstein">(Bronstein et al., 2017)</a> aims to use deep neural networks to learn the mapping, which we call \(f_{\theta}\), between input and target spaces. As has been mentioned previously, in many cases \(f_{\theta}\) can be decomposed as \(f_{\theta} = f_{pred} \circ f_{enc}\) the composition of two functions: the encoder (representation learning) and prediction function. Graph neural networks (GNNs) <a class="citation" href="#gnn_model">(Scarselli et al., 2009)</a> have obtained impressive results on these tasks but the wide success of transformer-based models in NLP begs the question as to whether these might be able to perform even better. Indeed, natural language can be viewed as a subclass of fully-connected graphs where each word represents a node. So if transformers efficiently and accurately learn \(f_{\theta}\) when the input space is a constrained form of graph, is it possible to modify the architecture to maintain performance when we generalize the input space?</p>
 
 <h2 id="proposed-solution">Proposed solution</h2>
@@ -209,7 +229,7 @@ This value will then serve as an enhanced embedding of the word \(k\).</p>
 
 <div class="row">
     <div class="col-sm mt-3 mt-md-0">
-        <img class="img-fluid rounded z-depth-1" src="/assets/img/transformer_resized.png" alt="" title="transformers" />
+        <img class="img-fluid rounded z-depth-1" src="/assets/img/transformer_resized.png" alt="" title="transformers">
     </div>
 </div>
 <div class="caption">
@@ -282,7 +302,7 @@ is a linearly independent family. We decide to write it with the complex notatio
 <p>Now that we have looked at the use of Laplacian eigenvectors as positional encoders, let’s see how informative these eigenvectors are to the structure and connectivity of the graph. A short mathematical overview of why these recapitulate a graph’s connectivity can be found at appendix A. To validate this empirically, we performed a simple experiment making sole use of the Laplacian eigenvectors to try and perform node classification via spectral clustering. Spectral clustering on the graph (see Algorithm 1 for description of the method) allows us to perform unsupervised clustering of the nodes into a predefined number of classes.  We rearranged the clusters’ names by using a hungarian algorithm, to fall back on the labels from the node classification task, which enabled a comparison of node classification performance using only these eigenvectors compared with the full Graph Transformer architecture.</p>
 
 <div style="text-align: center;">
-    <img class="img-fluid rounded z-depth-1" src="/assets/img/algo_1.png" alt="" title="transformers" />
+    <img class="img-fluid rounded z-depth-1" src="/assets/img/algo_1.png" alt="" title="transformers">
 </div>
 <div class="caption">
     Figure 2 - Spectral Clustering
@@ -292,7 +312,7 @@ is a linearly independent family. We decide to write it with the complex notatio
 We obtained far better results than random on the CLUSTER dataset, in which nodes are classified in six classes, however we did not outperform a random classification on the PATTERN dataset, in which nodes are classified only in two classes, which makes it easier for a random classification to perform correctly. Overall this still shows that the Laplacian eigenvectors provide structural information that can help with a node classification task if the underlying graph structure means that highly connected nodes also tend to have similar class labels, which seems to be the case on the CLUSTER dataset. But as shown by the large performance difference with GT, positionnal encodings cannot be used alone if we want to have good results.</p>
 
 <div style="text-align: center;">
-    <img class="img-fluid rounded z-depth-1" src="/assets/img/GT_spectral_results.png" alt="" title="transformers" />
+    <img class="img-fluid rounded z-depth-1" src="/assets/img/GT_spectral_results.png" alt="" title="transformers">
 </div>
 <div class="caption">
     Figure 3 - Spectral Clustering on CLUSTER and PATTERN. GT's results (accuracy) : 0.71 (CLUSTER), 0.73 (PATTERN)
@@ -310,7 +330,7 @@ We obtained far better results than random on the CLUSTER dataset, in which node
 The Weisfeiler Lehman algorithm proceeds as follows :</li>
 </ul>
 <div style="text-align: center;">
-    <img class="img-fluid rounded z-depth-1" src="/assets/img/algo_2.png" alt="" title="transformers" />
+    <img class="img-fluid rounded z-depth-1" src="/assets/img/algo_2.png" alt="" title="transformers">
 </div>
 <div class="caption">
     Figure 4 - Weisfeiler Lehman algorithm
@@ -320,7 +340,7 @@ The Weisfeiler Lehman algorithm proceeds as follows :</li>
 Figure 5 shows a graphical illustration of this algorithm. Values taken by $f$ are chosen random for the sake of the example.</p>
 
 <div style="text-align: center;">
-    <img class="img-fluid rounded z-depth-1" src="/assets/img/GT_WL_algo.png" alt="" title="transformers" />
+    <img class="img-fluid rounded z-depth-1" src="/assets/img/GT_WL_algo.png" alt="" title="transformers">
 </div>
 <div class="caption">
     Figure 5 - Weisfeiler Lehman algorithm
@@ -328,10 +348,10 @@ Figure 5 shows a graphical illustration of this algorithm. Values taken by $f$ a
 <p>We obtained a MAE of \(0.48\), which is a poor result compared to the ones given by other methods : \(0.276\) for GT, \(0.214\) for Gated GCN, \(0.384\) for GAT, and \(0.367\) for GCN. This confirms the need for perhaps more complex methods to obtain better performance.</p>
 
 <h3 id="generalizability-and-reproducibility">Generalizability and reproducibility</h3>
-<p>To have an in-depth look at the original code, we decided to run graph transformers on another dataset that was not present in the original paper or in the benchmarking-gnns repository that is maintained by the same authors . We chose the Pubmed and Cora <a class="citation" href="#pubmed_node_classif">(Sen et al., 2008)</a> node classification benchmarks as they are some of the most highly used node classification benchmarks in the graph machine-learning field with hundreds of papers citing each one per year with results available on papers with code. Although the overall results of the paper were reproducible, the code was very difficult to apply to the Pubmed dataset. No real packaging effort made the code’s adaptability very limited. No instructions are provided to run on other datasets, and no real overview of the repository structure is provided. To run the graph transformers architecture on Pubmed, we had to (i) create a custom dataset class to load the pytorch geometric dataset in the very specific format required by the training scripts (ii) rewrite the main training and data loading scripts to run graph transformers as many lines of code were dataset specific (iii) correct some minor parts of the actual architecture. The custom dataset class involved making the original pytorch geometric dataset compatible with the Deep Graph Library (dgl). However, the original code made use of several intermediate dataset classes before the final one obscuring the preparatory steps needed. Overall, the changes made are available on the <a href="https://github.com/SebastianPartarrieu/graph-transformer-explr">project github</a>.</p>
+<p>To have an in-depth look at the original code, we decided to run graph transformers on another dataset that was not present in the original paper or in the benchmarking-gnns repository that is maintained by the same authors . We chose the Pubmed and Cora <a class="citation" href="#pubmed_node_classif">(Sen et al., 2008)</a> node classification benchmarks as they are some of the most highly used node classification benchmarks in the graph machine-learning field with hundreds of papers citing each one per year with results available on papers with code. Although the overall results of the paper were reproducible, the code was very difficult to apply to the Pubmed dataset. No real packaging effort made the code’s adaptability very limited. No instructions are provided to run on other datasets, and no real overview of the repository structure is provided. To run the graph transformers architecture on Pubmed, we had to (i) create a custom dataset class to load the pytorch geometric dataset in the very specific format required by the training scripts (ii) rewrite the main training and data loading scripts to run graph transformers as many lines of code were dataset specific (iii) correct some minor parts of the actual architecture. The custom dataset class involved making the original pytorch geometric dataset compatible with the Deep Graph Library (dgl). However, the original code made use of several intermediate dataset classes before the final one obscuring the preparatory steps needed. Overall, the changes made are available on the <a href="https://github.com/SebastianPartarrieu/graph-transformer-explr" target="_blank" rel="noopener noreferrer">project github</a>.</p>
 
 <div style="text-align: center;">
-    <img class="img-fluid rounded z-depth-1" src="/assets/img/GT_table.png" alt="" title="transformers" />
+    <img class="img-fluid rounded z-depth-1" src="/assets/img/GT_table.png" alt="" title="transformers">
 </div>
 <div class="caption">
     Table 1 - Running GT on other datasets
@@ -343,7 +363,9 @@ Figure 5 shows a graphical illustration of this algorithm. Values taken by $f$ a
 <p>In conclusion, graph transformers are an interesting proof of concept of how the transformer architecture may be adapted to work on homogeneous graphs with arbitrary structure for various prediction problems. Although they do not beat the state-of-the-art as of yet, they present a promising avenue for further research in the area as transformers have showcased impressive performance in lots of adjacent domains. The key insights to adapt the transformer to graphs is the use of laplacian eigenvectors for positional encoding, the use of graph sparsity as in inductive bias in the node updates and the inclusion of edge features in the attention calculation. Much theoretical work remains to correctly analyze the full expressivity of graph transformers for graph prediction problems, build on the proposed proof of concept to actually obtain competitive results and make it a usable architecture by integrating it into popular online model repositories and working on the code’s cleanliness.</p>
 
 <h2 id="references">References</h2>
-<ol class="bibliography"><li><div class="row">
+<ol class="bibliography">
+<li>
+<div class="row">
   <div class="col-sm-2 abbr">
   
   </div>
@@ -411,7 +433,8 @@ Figure 5 shows a graphical illustration of this algorithm. Values taken by $f$ a
   </div>
 </div>
 </li>
-<li><div class="row">
+<li>
+<div class="row">
   <div class="col-sm-2 abbr">
   
   </div>
@@ -494,7 +517,8 @@ Figure 5 shows a graphical illustration of this algorithm. Values taken by $f$ a
   </div>
 </div>
 </li>
-<li><div class="row">
+<li>
+<div class="row">
   <div class="col-sm-2 abbr">
   
   </div>
@@ -577,7 +601,8 @@ Figure 5 shows a graphical illustration of this algorithm. Values taken by $f$ a
   </div>
 </div>
 </li>
-<li><div class="row">
+<li>
+<div class="row">
   <div class="col-sm-2 abbr">
   
   </div>
@@ -677,7 +702,8 @@ Figure 5 shows a graphical illustration of this algorithm. Values taken by $f$ a
   </div>
 </div>
 </li>
-<li><div class="row">
+<li>
+<div class="row">
   <div class="col-sm-2 abbr">
   
   </div>
@@ -747,7 +773,8 @@ Figure 5 shows a graphical illustration of this algorithm. Values taken by $f$ a
   </div>
 </div>
 </li>
-<li><div class="row">
+<li>
+<div class="row">
   <div class="col-sm-2 abbr">
   
   </div>
@@ -817,7 +844,8 @@ Figure 5 shows a graphical illustration of this algorithm. Values taken by $f$ a
   </div>
 </div>
 </li>
-<li><div class="row">
+<li>
+<div class="row">
   <div class="col-sm-2 abbr">
   
   </div>
@@ -932,7 +960,8 @@ Figure 5 shows a graphical illustration of this algorithm. Values taken by $f$ a
   </div>
 </div>
 </li>
-<li><div class="row">
+<li>
+<div class="row">
   <div class="col-sm-2 abbr">
   
   </div>
@@ -1047,7 +1076,8 @@ Figure 5 shows a graphical illustration of this algorithm. Values taken by $f$ a
   </div>
 </div>
 </li>
-<li><div class="row">
+<li>
+<div class="row">
   <div class="col-sm-2 abbr">
   
   </div>
@@ -1205,7 +1235,8 @@ Figure 5 shows a graphical illustration of this algorithm. Values taken by $f$ a
   </div>
 </div>
 </li>
-<li><div class="row">
+<li>
+<div class="row">
   <div class="col-sm-2 abbr">
   
   </div>
@@ -1303,7 +1334,8 @@ Figure 5 shows a graphical illustration of this algorithm. Values taken by $f$ a
   </div>
 </div>
 </li>
-<li><div class="row">
+<li>
+<div class="row">
   <div class="col-sm-2 abbr">
   
   </div>
@@ -1431,7 +1463,8 @@ Figure 5 shows a graphical illustration of this algorithm. Values taken by $f$ a
   </div>
 </div>
 </li>
-<li><div class="row">
+<li>
+<div class="row">
   <div class="col-sm-2 abbr">
   
   </div>
@@ -1501,7 +1534,8 @@ Figure 5 shows a graphical illustration of this algorithm. Values taken by $f$ a
   </div>
 </div>
 </li>
-<li><div class="row">
+<li>
+<div class="row">
   <div class="col-sm-2 abbr">
   
   </div>
@@ -1552,7 +1586,8 @@ Figure 5 shows a graphical illustration of this algorithm. Values taken by $f$ a
   </div>
 </div>
 </li>
-<li><div class="row">
+<li>
+<div class="row">
   <div class="col-sm-2 abbr">
   
   </div>
@@ -1681,7 +1716,8 @@ Figure 5 shows a graphical illustration of this algorithm. Values taken by $f$ a
     
   </div>
 </div>
-</li></ol>
+</li>
+</ol>
 
 <h2 id="appendix">Appendix</h2>
 
@@ -1707,12 +1743,12 @@ The final equation shows that nodes that are connected (in E) will have similar 
     
 <footer class="sticky-bottom mt-5">
   <div class="container">
-    &copy; Copyright 2023 Sebastian A. Partarrieu.
-    Powered by <a href="http://jekyllrb.com/" target="_blank">Jekyll</a> with <a href="https://github.com/alshedivat/al-folio">al-folio</a> theme. Hosted by <a href="https://pages.github.com/" target="_blank">GitHub Pages</a>.
+    © Copyright 2023 Sebastian A. Partarrieu.
+    Powered by <a href="http://jekyllrb.com/" target="_blank" rel="noopener noreferrer">Jekyll</a> with <a href="https://github.com/alshedivat/al-folio" target="_blank" rel="noopener noreferrer">al-folio</a> theme. Hosted by <a href="https://pages.github.com/" target="_blank" rel="noopener noreferrer">GitHub Pages</a>.
 
     
     
-    Last updated: February 22, 2023.
+    Last updated: March 19, 2023.
     
   </div>
 </footer>
