@@ -10,7 +10,7 @@ github: https://github.com/SebastianPartarrieu/graph-transformer-explr/
 header-includes:
   - \usepackage[ruled,vlined,linesnumbered]{algorithm2e}
 ---
-*This project was conducted as part of the [Geometric Data Analysis](https://www.master-mva.com/cours/geometric-data-analysis/) course of the [MVA](https://www.master-mva.com/) master's degree. You can find all the code [here](https://github.com/SebastianPartarrieu/graph-transformer-explr) and the original report Emma Bou Hanna & I wrote [here](https://github.com/SebastianPartarrieu/graph-transformer-explr/blob/master/docs/Final_project_report_BouHanna_Partarrieu.pdf). What follows is largely taken from the project report.*
+*This project was conducted as part of the [Geometric Data Analysis](https://www.master-mva.com/cours/geometric-data-analysis/) course of the [MVA](https://www.master-mva.com/) master's degree. You can find all the code [here](https://github.com/SebastianPartarrieu/graph-transformer-explr) and the original report [Emma Bou Hanna](https://www.linkedin.com/in/emma-bou-hanna/) & I wrote [here](https://github.com/SebastianPartarrieu/graph-transformer-explr/blob/master/docs/Final_project_report_BouHanna_Partarrieu.pdf). What follows is largely taken from the project report.*
 
 <div class="row justify-content-sm-center">
     <div class="col">

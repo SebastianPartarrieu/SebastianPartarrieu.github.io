@@ -4,7 +4,7 @@ title: "Published! New brain-machine interface design"
 date: 2023-02-20 11:12:00-0400
 description: Flexible mesh electronics for lifetime neuron recordings in mice
 bibliography:
-tags: math bioengineering code
+tags: math bioengineering code papers
 ---
 
 After months of hard work, [the manuscript](https://www.nature.com/articles/s41593-023-01267-x) *Tracking neural activity from the same cells during the entire adult life of mice* is now finally available in Nature Neuroscience! This work was conducted by the [Jia Liu Group](https://liulab.seas.harvard.edu/) and I was lucky to be a part of the effort during a six-month stint there. **Disclaimer**: as I worked mostly on the data analysis / machine-learning side of things, I probably won't cover the paper comprehensively - feel free to go check it out if you want to see the real deal. In addition, the goal here is to provide a somewhat concise overview of the paper, so don't expect the nitty gritty details. Finally, you can also have a look at this [Twitter thread](https://twitter.com/ganoopyliujia/status/1627712813610471425) from Pr. Liu himself going through some of the main contributions of the paper.
