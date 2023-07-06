@@ -162,6 +162,10 @@
           
           
           
+          
+          
+          
+          
             <div class="toggle-container">
               <a id="light-toggle">
                   <i class="fas fa-moon"></i>
@@ -274,9 +278,10 @@
 <h3 id="front-ends">Front-end(s)</h3>
 <p><em>The website for the business side being a basic, standard website (HTML, CSS and JS) I won’t talk about it much here. However, you can have a look at the <a href="https://github.com/SebastianPartarrieu/Promotion/tree/main/back_end/static" target="_blank" rel="noopener noreferrer">github</a> if you’re interested</em>.</p>
 
-<p>The application front-end was built using <a href="http://reactnative.dev/" target="_blank" rel="noopener noreferrer">React-Native</a> (a javascript framework), which is <strong>fabulously</strong> convenient as it renders UIs in both android and iOS. This means with the same body of code, you can have an app that functions properly on the only two smartphone operating systems still around (sorry windows phone…). In accordance with the latest versions of the React documentation, we essentially wrote function components (<a href="http://reactnative.dev/docs/getting-started" target="_blank" rel="noopener noreferrer">‘future facing way to write your React components’</a>) seperated out in a few different scripts. Handling navigation and getting to know how React works were the true challenges here. There were, of course, innumerable bugs along the way but once you understand how the navigation stack works and how to make components interacts it ends up working.</p>
+<p>The application front-end was built using <a href="http://reactnative.dev/" target="_blank" rel="noopener noreferrer">React-Native</a> (a javascript framework), which is <strong>fabulously</strong> convenient as it renders UIs in both android and iOS. This means with the same body of code, you can have an app that functions properly on the only two smartphone operating systems still around (sorry windows phone…). In accordance with the latest versions of the React documentation, we essentially wrote function components (<a href="http://reactnative.dev/docs/getting-started" target="_blank" rel="noopener noreferrer">‘future facing way to write your React components’</a>) seperated out in a few different scripts. Handling navigation and getting to know how React works were the true challenges here. There were, of course, inumerable bugs along the way but once you understand how the navigation stack works and how to make components interacts it ends up working.</p>
 
 <p>A fun part, (fun meaning it probably generated the most headaches), was handling the requests to be sent to the back-end. A code snippet below shows one example, where the search request queries the back-end for businesses with a search string and categories to filter the results out.</p>
+
 <div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">function</span> <span class="nx">sendSearchRequest</span><span class="p">(</span><span class="nx">search</span><span class="p">,</span><span class="nx">categorie</span><span class="p">,</span><span class="nx">updateFunction</span><span class="p">,</span><span class="nx">route</span><span class="p">){</span>
 
   <span class="kd">const</span> <span class="nx">url</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">URL</span><span class="p">(</span><span class="nx">route</span><span class="p">,</span> <span class="nx">server</span><span class="p">.</span><span class="nx">server</span><span class="p">)</span>
@@ -322,7 +327,7 @@
 
     
     
-    Last updated: April 22, 2023.
+    Last updated: July 06, 2023.
     
   </div>
 </footer>

@@ -1,6 +1,6 @@
 ---
 layout: post
-title: "[Book Review] Why We Sleep, Matthew Walker"
+title: "Why We Sleep, Matthew Walker"
 date: 2022-01-16 11:12:00-0400
 description: Unlocking the power of sleep and dreams
 bibliography: why_we_sleep.bib

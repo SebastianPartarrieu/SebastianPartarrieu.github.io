@@ -1,2 +1,7 @@
 "Nat. Neurosci":
   url: https://www.nature.com/neuro/
+  color: "#00928c"
+
+"Nat. Commun":
+  url: https://www.nature.com/ncomms/
+  color: "#e63323"
