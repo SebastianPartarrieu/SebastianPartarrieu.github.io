@@ -1,5 +1,5 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="4.2.0">Jekyll</generator><link href="https://sebastianpartarrieu.github.io//feed.xml" rel="self" type="application/atom+xml" /><link href="https://sebastianpartarrieu.github.io//" rel="alternate" type="text/html" /><updated>2023-07-06T22:27:46+02:00</updated><id>https://sebastianpartarrieu.github.io//feed.xml</id><title type="html">S. Partarrieu</title><subtitle></subtitle><entry><title type="html">Hyperspherical Variational Auto-Encoders</title><link href="https://sebastianpartarrieu.github.io//blog/2023/hyperspherical-VAEs/" rel="alternate" type="text/html" title="Hyperspherical Variational Auto-Encoders" /><published>2023-04-06T17:12:00+02:00</published><updated>2023-04-06T17:12:00+02:00</updated><id>https://sebastianpartarrieu.github.io//blog/2023/hyperspherical-VAEs</id><content type="html" xml:base="https://sebastianpartarrieu.github.io//blog/2023/hyperspherical-VAEs/"><![CDATA[<div class="row justify-content-sm-center">
-        <img class="img-fluid rounded z-depth-1" zoomable="true" src="/assets/img/hyperspherical_VAE_stable_diffusion.jpeg" alt="" title="H-VAE" width="400" height="200" />
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="4.2.0">Jekyll</generator><link href="https://sebastianpartarrieu.github.io//feed.xml" rel="self" type="application/atom+xml" /><link href="https://sebastianpartarrieu.github.io//" rel="alternate" type="text/html" /><updated>2023-07-14T07:52:24+02:00</updated><id>https://sebastianpartarrieu.github.io//feed.xml</id><title type="html">S. Partarrieu</title><subtitle></subtitle><entry><title type="html">Hyperspherical Variational Auto-Encoders</title><link href="https://sebastianpartarrieu.github.io//blog/2023/hyperspherical-VAEs/" rel="alternate" type="text/html" title="Hyperspherical Variational Auto-Encoders" /><published>2023-04-06T17:12:00+02:00</published><updated>2023-04-06T17:12:00+02:00</updated><id>https://sebastianpartarrieu.github.io//blog/2023/hyperspherical-VAEs</id><content type="html" xml:base="https://sebastianpartarrieu.github.io//blog/2023/hyperspherical-VAEs/"><![CDATA[<div class="row justify-content-sm-center">
+        <img class="img-fluid rounded z-depth-1" zoomable="true" src="/assets/img/stable_diff_hvae.jpeg" alt="" title="H-VAE" width="400" height="200" />
     </div>
 <div class="caption">
     Hyperspherical variational autoencoders (generated using Stable Diffusion)
@@ -7,9 +7,9 @@
 
 <p>“<strong>OMG</strong>, have you seen [insert latest OpenAI GPT model], isn’t it amazing !???”</p>
 
-<p>For all those who are getting a little irritated at the sheer quantity of noise in the recent hype cycle, and of all the former web3.0/crypto-heads now going “all-in” on AI: you’ve come to the right place. Let’s forget about the hype and about <a href="https://time.com/6266923/ai-eliezer-yudkowsky-open-letter-not-enough/">how we’re all supposedly going to die</a>, heck let’s even forget about the transformer architecture and GPT-style generative models. Instead, why don’t we lay back, do some math, and have a look at another type of probabilistic generative model - the variational autoencoder (VAE). Don’t worry, this won’t be the million-th blog post explaining how these work, instead I’ll be diving into a recent(ish) flavor of VAE: the <a href="https://arxiv.org/pdf/1804.00891.pdf">Hyperspherical VAE</a>. These modify the prior and posterior to use non-Gaussians distributions such as the von Mises-Fisher (vMF) distributions, which can be interesting when we expect the latent structure to exhibit some hyperspherical properties. Plus, not only does hyperspherical latent structure <em>sound</em> cool but it also gives some neat visualizations. So, if you have 5 mins of your precious time to spare, we can go through the paper together and I’ll show you a few fun experiments we were able to implement which allowed us to play with the original code and try to bump performance a little.</p>
+<p>For all those who are getting a little irritated at the sheer quantity of noise in the recent hype cycle, and of all the former web3.0/crypto-heads now going “all-in” on AI: you’ve come to the right place. Let’s forget about the hype and about <a href="https://time.com/6266923/ai-eliezer-yudkowsky-open-letter-not-enough/">how we’re all supposedly going to die</a>, heck let’s even forget about the transformer architecture and GPT-style generative models. Instead, why don’t we lay back, do some math, and have a look at another type of probabilistic generative model - the variational autoencoder (VAE). Don’t worry, this won’t be the million-th blog post explaining how these work, instead I’ll be diving into a recent(ish) flavor of VAE: the <a href="https://arxiv.org/pdf/1804.00891.pdf">Hyperspherical VAE</a>. These modify the posterior to use non-Gaussians distributions such as the von Mises-Fisher (vMF) distributions, which can be interesting when we expect the latent structure to exhibit some hyperspherical properties. Plus, not only does hyperspherical latent structure <em>sound</em> cool but it also gives some neat visualizations. So, if you have 5 mins of your precious time to spare, we can go through the paper together and I’ll show you a few fun experiments we were able to implement which allowed us to play with the original code and try to bump performance a little.</p>
 
-<h1 id="a-very-brief-primer-on-vaes">A <em>very</em> brief primer on VAEs</h1>
+<h2 id="a-primer-on-vaes">A primer on VAEs</h2>
 <p>If you’re still reading at this point, I’m guessing you weren’t bored by the ML jargon above and hopefully this means you also already kind of know how a VAE works. For our purposes, a VAE looks something like this:</p>
 
 <div class="row justify-content-sm-center">
@@ -23,22 +23,98 @@
 
 <p>Well, if we consider \(X\) to follow a certain distribution, we can frame the problem as maximizing the log-likelihood of the data \(\log p_{\tau}(x)\) where \(\tau\) parametrizes our input data distribution. This is interesting as if we have the “optimal” parameter that adequately describes our input distribution, then we can sample from the input space directly which means generating new images (hence the name probabilistic generative model). Since the images will be drawn from the “same” distribution as our training set, hopefully this means these won’t look like random noise. The problem is that we don’t know how to optimize \(p_{\tau}(x)\) directly. Let’s imagine an input space of images of cats, you can’t really say “let’s find the best mean and stdev for a multi dimensional gaussian that fits these images” - no gaussian distribution would ever fit that remotely well. Instead, we can consider a latent variable \(Z\) that generates our observations. The nice thing is, we can imagine this latent variable to follow any distribution we would like. This means if we can reframe the optimization of our likelihood to include terms with respect to our latent variable, we have a fighting chance of being able to include reasonable prior assumptions and actually compute the thing.</p>
 
-<p>More mathematically, consider \(\log p_{\tau}(x)\) within the variational framework: we marginalize over the latent space distribution \(p_{\tau}(x) = \int_{z}^{} p_{\tau}(x, z) \,dz\) and rewrite this is as \(p_{\tau}(x) = \int_{z}^{} p_{\tau}(x \| z)p_{\tau}(z) \,dz\). Without going into further detail (see <a href="https://en.wikipedia.org/wiki/Variational_autoencoder#:~:text=Variational%20autoencoders%20are%20probabilistic%20generative,first%20and%20second%20component%20respectively.">Wiki</a>), you can optimize a lower bound of the log of this integral by maximizing the Evidence Lower Bound (ELBO) \(\mathbb{E}_{q_{\psi}(z \| x)}[ \log p_{\theta}(x \| z)] - KL(q_{\psi}(z \| x) \| p_{\tau}(z))\). Here, \(q_{\psi}(z \| x)\) represents our approximate posterior distribution (which is why we use q and not p). This approximate posterior is taken from a family of distributions (e.g. gaussian or vMF as we will see later) and we parametrize it by \(\psi\). In practice this parametrization refers to the encoder neural network that will output the parameters of the posterior distribution given an input.</p>
+<p>More mathematically, consider \(\log p_{\tau}(x)\) within the variational framework: we marginalize over the latent space distribution \(p_{\tau}(x) = \int_{z}^{} p_{\tau}(x, z) \,dz\) and rewrite this is as \(p_{\tau}(x) = \int_{z}^{} p_{\tau}(x \| z)p_{\tau}(z) \,dz\). Without going into further detail (see <a href="https://en.wikipedia.org/wiki/Variational_autoencoder#:~:text=Variational%20autoencoders%20are%20probabilistic%20generative,first%20and%20second%20component%20respectively.">Wiki</a>), you can optimize a lower bound of the log of this integral by maximizing the Evidence Lower Bound (ELBO) \(\mathbb{E}_{q_{\psi}(z \| x)}[ \log p_{\theta}(x \| z)] - KL(q_{\psi}(z \| x) \| p_{\tau}(z))\). Here, \(q_{\psi}(z \| x)\) represents our approximate posterior distribution (which is why we use q and not p). This approximate posterior is taken from a family of distributions (e.g. gaussian or vMF as we will see later) and we parametrize it by \(\psi\). In practice this parametrization refers to the encoder neural network that will output the parameters of the posterior distribution given an input. In the simplified VAE shown above, these parameters correspond to the mean and standard deviation of a gaussian distribution. <strong>The main idea of the paper is to consider a vMF distribution for the posterior which gives the latent space “hyperspherical” properties. They also provide the theoretical work needed to backpropagate to find the parameters of the vMF distribution where previous work had considered one of the parameters as constant.</strong></p>
 
-<p>-&gt; link to the fact that we use the vMF as the prior on our latent distribution instead of a gaussian</p>
-<h2 id="vmf-distribution">vMF distribution</h2>
-<p>The von-Mises Ficher distribution is interesting to consider as a prior for a number of reasons. First, it is not a gaussian. This may sound kind of dumb but honestly, it is not a bad first-order approximation to say that sometimes the best you can do to try and improve a certain method is to where the algorithm relies on the assumption that the underlying distribution is gaussian and <strong>ditch</strong> that. A little more seriously, the von-Mises Fisher is adapted for hyperspherical distributions.</p>
+<div class="row justify-content-sm-center">
+        <img class="img-fluid rounded z-depth-1" zoomable="true" src="/assets/img/main_contribution_hvae.jpg" alt="" title="main_contribution" width="500" height="300" />
+    </div>
+<div class="caption">
+    The paper's main contribution
+</div>
+
+<h2 id="the-vmf-distribution">The vMF distribution</h2>
+<p>The von-Mises Ficher distribution is interesting to consider as a prior for a number of reasons. First, it is not a gaussian. This may sound kind of dumb but honestly, it is not a bad first-order approximation to say that sometimes the best you can do to try and improve a certain method is to find where the algorithm relies on the assumption that the underlying distribution is gaussian and <strong>ditch</strong> that. A little more seriously, the von-Mises Fisher is adapted for hyperspherical distributions. Specifically, it is a probability distribution defined on the surface of a hypersphere (a sphere in a potentially high-dimensional space). As you can see in the cute visualization below, it’s quite useful to model directional data on this hypersphere as the \(\kappa\) parameter controls the concentration of the distribution aruond a specific direction. The pdf looks like this \(f(x | \mu, \kappa) = C(\kappa)\exp(\kappa \mu^Tx)\) where \(x\) can be of any dimension. For our purposes we don’t really need to know what \(C(\kappa)\) is (it’s just a normalization constant) but what’s import to note is that as \(\kappa\) increases, the distribution gets more concentrated around the mean \(\mu\) direction.</p>
+
+<p>Some <a href="https://github.com/EmmaBouhanna/HM-SVAE">messy code</a> shows this very well:</p>
+<div class="row justify-content-sm-center">
+        <img class="img-fluid rounded z-depth-1" zoomable="true" src="/assets/img/vMF_sampling_base.jpg" alt="" title="sampling_vMF" width="500" height="300" />
+    </div>
+<div class="caption">
+    Sampling the vMF distribution
+</div>
 
 <h2 id="kl-divergence-and-vmf-sampling">KL divergence and vMF sampling</h2>
+<p>Since everything is probabilistic, to decode an input with the decoder we need to be able to sample from the latent space. Also, to backprogate the loss and update the distribution parameters (all the guides I was mentioning should have explained to you how the reparametrization trick helps with this) we need the reparametrization trick to make sure we can actually differentiate with respect to the distribution parameters. The paper deals with both of these issues nicely. The main component of the vMF sampling corresponds to <a href="https://en.wikipedia.org/wiki/Rejection_sampling">acceptance rejection sampling</a> with a clever reparametrization trick you can see highlighted below:</p>
+
+<div class="row justify-content-sm-center">
+        <img class="img-fluid rounded z-depth-1" zoomable="true" src="/assets/img/algo1_hvae.jpg" alt="" title="sampling_vMF" width="500" height="300" />
+    </div>
+<div class="caption">
+    Sampling the vMF distribution, the main algorithm
+</div>
+
+<div class="row justify-content-sm-center">
+        <img class="img-fluid rounded z-depth-1" zoomable="true" src="/assets/img/param_trick_hvae.jpg" alt="" title="sampling_vMF" width="500" height="300" />
+    </div>
+<div class="caption">
+    Sampling the vMF distribution, acceptance rejection
+</div>
+<p>Although the specifics are somewhat painful, we sought to see if we could play around with the sampling implemented in the paper. Was there perhaps a better sampling method? Would it impact performance?</p>
 
 <h2 id="modifying-the-sampling-mechanism-from-the-original-paper">Modifying the sampling mechanism from the original paper</h2>
+<p>So, we looked into how we could modify the acceptance rejection sampling to something else. This was really more to get a sense of the code and to implement a sampler rather than because some theoretical insights might have suggested a better sampler could improve the H-VAEs performance. You can see below the exact sampling algorithm we decided to implement (the <a href="https://en.wikipedia.org/wiki/Metropolis%E2%80%93Hastings_algorithm">Metropolis-Hastings algorithm</a>) which basically amounts to just changing the ratio used to reject samples.</p>
 
-<h1 id="some-experiments">Some experiments</h1>
+<div class="row justify-content-sm-center">
+        <img class="img-fluid rounded z-depth-1" zoomable="true" src="/assets/img/HM_hvae.jpg" alt="" title="sampling_vMF" width="500" height="300" />
+    </div>
+<div class="caption">
+    Sampling the vMF distribution, Hasting Metropolis sampler
+</div>
+
+<p>It was fun to be able to code this and to see if there was any real impact on performance/how the samplers differed. We can actually compare the new sampling without all the VAE around it. Let’s take the sampling of the vMF we saw previously and compare it to the HM sampler. We can see that the HM is slightly more exploratory with a distribution that seems to be more spread out for a same value of \(\kappa\).</p>
+
+<div class="row justify-content-sm-center">
+        <img class="img-fluid rounded z-depth-1" zoomable="true" src="/assets/img/HM_vs_base_sampling_hvae.jpg" alt="" title="sampling_vMF" width="500" height="300" />
+    </div>
+<div class="caption">
+    Sampling the vMF distribution, HM versus acceptance rejection
+</div>
 
 <h2 id="mnist-reconstruction">MNIST reconstruction</h2>
-<p>(Yes, we’re <em>still</em> using MNIST for experiments, even in 2023…)</p>
+<p>(Yes, we’re <em>still</em> using MNIST for experiments, even in 2023…). The final thing we wanted to test was to see if this modified sampling actually had any impact on this H-VAEs performance. To test this, we take the one and only OG MNIST dataset. The experiment solely consists in running the training of the H-VAE on MNIST and then looking at the training and testing performance when we use either sampler. Long story short, there’s no real training or testing loss performance. This was kind of to be expected since we did not change the sampler substantially but, intuitively, if you’re able to sample better from the posterior distribution your performance shoult get better.</p>
 
-<h2 id="having-a-look-at-the-latent-space">Having a look at the latent space</h2>
+<div class="row justify-content-sm-center">
+        <img class="img-fluid rounded z-depth-1" zoomable="true" src="/assets/img/hvae_MNIST_training_loss.jpg" alt="" title="HVAE training loss" width="500" height="300" />
+    </div>
+<div class="caption">
+    MNIST reconstruction experiment, comparing samplers
+</div>
+
+<div class="row justify-content-sm-center">
+        <img class="img-fluid rounded z-depth-1" zoomable="true" src="/assets/img/hvae_MNIST_testing_loss.jpg" alt="" title="HVAE testing loss" width="500" height="300" />
+    </div>
+<div class="caption">
+    MNIST reconstruction experiment, comparing samplers
+</div>
+
+<h2 id="visualizing-the-latent-space">Visualizing the latent space</h2>
+<p>Finally, for some cool visuals, it’s always nice to look at the latent space. In this case, we can look at how the various MNIST digits are distributed across the hypersphere and how digits that resemble each other lie closer in the latent space.</p>
+
+<div class="row justify-content-sm-center">
+        <img class="img-fluid rounded z-depth-1" zoomable="true" src="/assets/img/hvae_latent_space_sampling.jpg" alt="" title="HVAE latent space sampling" width="500" height="300" />
+    </div>
+<div class="caption">
+    Visualizing the H-VAE latent space
+</div>
+
+<div class="row justify-content-sm-center">
+        <img class="img-fluid rounded z-depth-1" zoomable="true" src="/assets/img/basic_animation.gif" alt="" title="HVAE latent space sampling" width="500" height="300" />
+    </div>
+<div class="caption">
+    Visualizing the H-VAE latent space, each color is a digit
+</div>
+
+<h2 id="conclusion">Conclusion</h2>
 
 <p><em>Originally, this was a short project carried out by <a href="https://www.linkedin.com/in/emma-bou-hanna/">Emma Bou Hanna</a> &amp; me (Sebastian Partarrieu) for the <a href="https://www.master-mva.com/cours/computational-statistics/">Computational Statistics course</a> of the MVA master’s degree.</em></p>]]></content><author><name></name></author><category term="math" /><category term="code" /><category term="papers" /><summary type="html"><![CDATA[Dive into VAEs with non Gaussian distributions]]></summary></entry><entry><title type="html">Published! New brain-machine interface design</title><link href="https://sebastianpartarrieu.github.io//blog/2023/mesh-electronics-BMI/" rel="alternate" type="text/html" title="Published! New brain-machine interface design" /><published>2023-02-20T16:12:00+01:00</published><updated>2023-02-20T16:12:00+01:00</updated><id>https://sebastianpartarrieu.github.io//blog/2023/mesh-electronics-BMI</id><content type="html" xml:base="https://sebastianpartarrieu.github.io//blog/2023/mesh-electronics-BMI/"><![CDATA[<p>After months of hard work, <a href="https://www.nature.com/articles/s41593-023-01267-x">the manuscript</a> <em>Tracking neural activity from the same cells during the entire adult life of mice</em> is now finally available in Nature Neuroscience! This work was conducted by the <a href="https://liulab.seas.harvard.edu/">Jia Liu Group</a> and I was lucky to be a part of the effort during a six-month stint there. <strong>Disclaimer</strong>: as I worked mostly on the data analysis / machine-learning side of things (and only did so for a fairly small amount of time), I probably won’t cover the paper comprehensively - feel free to go check it out if you want to see the real deal. In addition, the goal here is to provide a somewhat concise overview of the paper, so don’t expect the nitty gritty details. Finally, you can also have a look at this <a href="https://twitter.com/ganoopyliujia/status/1627712813610471425">Twitter thread</a> from Pr. Liu himself going through some of the main contributions of the paper.</p>
 
