@@ -5,3 +5,7 @@
 "Nat. Commun":
   url: https://www.nature.com/ncomms/
   color: "#e63323"
+
+"Nat. Nanotechnol":
+  url: https://www.nature.com/nnano/
+  color: "#f7a70a"
