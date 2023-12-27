@@ -14,6 +14,9 @@ group :jekyll_plugins do
     gem 'jekyll-sitemap'
     gem 'jekyll-target-blank'
     gem 'jemoji'
+    gem 'observer'
+    gem 'csv'
+    gem 'faraday-retry'
     gem 'unicode_utils'
     gem 'webrick'
 end

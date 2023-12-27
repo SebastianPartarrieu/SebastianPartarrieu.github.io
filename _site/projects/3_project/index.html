@@ -81,7 +81,7 @@
     <nav id="navbar" class="navbar navbar-light navbar-expand-sm fixed-top">
     <div class="container">
       
-      <a class="navbar-brand title font-weight-lighter" href="https://sebastianpartarrieu.github.io//">
+      <a class="navbar-brand title font-weight-lighter" href="http://localhost:4000/">
        S. Partarrieu
       </a>
       
@@ -282,25 +282,25 @@
 
 <p>A fun part, (fun meaning it probably generated the most headaches), was handling the requests to be sent to the back-end. A code snippet below shows one example, where the search request queries the back-end for businesses with a search string and categories to filter the results out.</p>
 
-<div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">function</span> <span class="nx">sendSearchRequest</span><span class="p">(</span><span class="nx">search</span><span class="p">,</span><span class="nx">categorie</span><span class="p">,</span><span class="nx">updateFunction</span><span class="p">,</span><span class="nx">route</span><span class="p">){</span>
+<div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">function</span> <span class="nf">sendSearchRequest</span><span class="p">(</span><span class="nx">search</span><span class="p">,</span><span class="nx">categorie</span><span class="p">,</span><span class="nx">updateFunction</span><span class="p">,</span><span class="nx">route</span><span class="p">){</span>
 
-  <span class="kd">const</span> <span class="nx">url</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">URL</span><span class="p">(</span><span class="nx">route</span><span class="p">,</span> <span class="nx">server</span><span class="p">.</span><span class="nx">server</span><span class="p">)</span>
+  <span class="kd">const</span> <span class="nx">url</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">URL</span><span class="p">(</span><span class="nx">route</span><span class="p">,</span> <span class="nx">server</span><span class="p">.</span><span class="nx">server</span><span class="p">)</span>
 
   <span class="kd">const</span> <span class="nx">recherche</span> <span class="o">=</span> <span class="nx">search</span><span class="p">;</span>
-  <span class="nx">url</span><span class="p">.</span><span class="nx">searchParams</span><span class="p">.</span><span class="nx">append</span><span class="p">(</span><span class="dl">'</span><span class="s1">search</span><span class="dl">'</span><span class="p">,</span><span class="nx">recherche</span><span class="p">)</span>
-  <span class="k">if</span> <span class="p">(</span><span class="nx">categorie</span><span class="o">!=</span><span class="dl">''</span><span class="p">)</span>
+  <span class="nx">url</span><span class="p">.</span><span class="nx">searchParams</span><span class="p">.</span><span class="nf">append</span><span class="p">(</span><span class="dl">'</span><span class="s1">search</span><span class="dl">'</span><span class="p">,</span><span class="nx">recherche</span><span class="p">)</span>
+  <span class="k">if </span><span class="p">(</span><span class="nx">categorie</span><span class="o">!=</span><span class="dl">''</span><span class="p">)</span>
     <span class="p">{</span> 
-      <span class="nx">url</span><span class="p">.</span><span class="nx">searchParams</span><span class="p">.</span><span class="nx">append</span><span class="p">(</span><span class="dl">'</span><span class="s1">categorie</span><span class="dl">'</span><span class="p">,</span><span class="nx">categorie</span><span class="p">)</span>
+      <span class="nx">url</span><span class="p">.</span><span class="nx">searchParams</span><span class="p">.</span><span class="nf">append</span><span class="p">(</span><span class="dl">'</span><span class="s1">categorie</span><span class="dl">'</span><span class="p">,</span><span class="nx">categorie</span><span class="p">)</span>
     <span class="p">};</span>
   
 
-  <span class="nx">fetch</span><span class="p">(</span><span class="nx">url</span><span class="p">,</span> <span class="p">{</span>
+  <span class="nf">fetch</span><span class="p">(</span><span class="nx">url</span><span class="p">,</span> <span class="p">{</span>
     <span class="na">method</span> <span class="p">:</span> <span class="dl">'</span><span class="s1">GET</span><span class="dl">'</span><span class="p">,</span>
     <span class="na">headers</span><span class="p">:</span> <span class="p">{</span>
       <span class="na">Accept</span><span class="p">:</span> <span class="dl">'</span><span class="s1">application/json</span><span class="dl">'</span><span class="p">,},</span>
 
-  <span class="p">}).</span><span class="nx">then</span><span class="p">((</span><span class="nx">response</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="nx">response</span><span class="p">.</span><span class="nx">json</span><span class="p">()).</span><span class="nx">then</span><span class="p">(</span><span class="nx">updateFunction</span><span class="p">).</span><span class="k">catch</span><span class="p">(</span>
-    <span class="p">(</span><span class="nx">e</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="p">{</span><span class="nx">alert</span><span class="p">(</span><span class="dl">'</span><span class="s1">Something went wrong</span><span class="dl">'</span> <span class="o">+</span> <span class="nx">e</span><span class="p">.</span><span class="nx">message</span><span class="p">)}</span>
+  <span class="p">}).</span><span class="nf">then</span><span class="p">((</span><span class="nx">response</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="nx">response</span><span class="p">.</span><span class="nf">json</span><span class="p">()).</span><span class="nf">then</span><span class="p">(</span><span class="nx">updateFunction</span><span class="p">).</span><span class="k">catch</span><span class="p">(</span>
+    <span class="p">(</span><span class="nx">e</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="p">{</span><span class="nf">alert</span><span class="p">(</span><span class="dl">'</span><span class="s1">Something went wrong</span><span class="dl">'</span> <span class="o">+</span> <span class="nx">e</span><span class="p">.</span><span class="nx">message</span><span class="p">)}</span>
   <span class="p">)</span>
 <span class="p">}</span>
 </code></pre></div></div>
@@ -327,7 +327,7 @@
 
     
     
-    Last updated: July 14, 2023.
+    Last updated: December 27, 2023.
     
   </div>
 </footer>
