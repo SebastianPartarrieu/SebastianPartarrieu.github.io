@@ -8,4 +8,4 @@
 ./bin/deploy
 Gemfile.lock
 vendor
-.vscode
+.vscode/
