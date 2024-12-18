@@ -44,7 +44,7 @@ More mathematically, consider $$\log p_{\tau}(x)$$ within the variational framew
 
 ## The vMF distribution
 
-The von-Mises Ficher distribution is interesting to consider as a prior for a number of reasons. First, it is not a gaussian. This may sound kind of dumb but honestly, it is not a bad first-order approximation to say that sometimes the best you can do to try and improve a certain method is to find where the algorithm relies on the assumption that the underlying distribution is gaussian and **ditch** that. A little more seriously, the von-Mises Fisher is adapted for hyperspherical distributions. Specifically, it is a probability distribution defined on the surface of a hypersphere (a sphere in a potentially high-dimensional space). As you can see in the cute visualization below, it's quite useful to model directional data on this hypersphere as the $$\kappa$$ parameter controls the concentration of the distribution aruond a specific direction. The pdf looks like this $$f(x | \mu, \kappa) = C(\kappa)\exp(\kappa \mu^Tx)$$ where $$x$$ can be of any dimension. For our purposes we don't really need to know what $$C(\kappa)$$ is (it's just a normalization constant) but what's import to note is that as $$\kappa$$ increases, the distribution gets more concentrated around the mean $$\mu$$ direction.
+The von-Mises Fisher distribution is interesting to consider as a prior for a number of reasons. First, it is not a gaussian. This may sound kind of dumb but honestly, it is not a bad first-order approximation to say that sometimes the best you can do to try and improve a certain method is to find where the algorithm relies on the assumption that the underlying distribution is gaussian and **ditch** that. A little more seriously, the von-Mises Fisher is adapted for hyperspherical distributions. Specifically, it is a probability distribution defined on the surface of a hypersphere (a sphere in a potentially high-dimensional space). As you can see in the cute visualization below, it's quite useful to model directional data on this hypersphere as the $$\kappa$$ parameter controls the concentration of the distribution around a specific direction. The pdf looks like this $$f(x \| \mu, \kappa) = C(\kappa)\exp(\kappa \mu^T x)$$ where $$x$$ can be of any dimension. For our purposes we don't really need to know what $$C(\kappa)$$ is (it's just a normalization constant) but what's import to note is that as $$\kappa$$ increases, the distribution gets more concentrated around the mean $$\mu$$ direction.
 
 Some [messy code](https://github.com/EmmaBouhanna/HM-SVAE) shows this very well:
 
@@ -129,7 +129,3 @@ Finally, for some cool visuals, it's always nice to look at the latent space. In
 <div class="caption">
     Visualizing the H-VAE latent space, each color is a digit
 </div>
-
-## Conclusion
-
-_Originally, this was a short project carried out by [Emma Bou Hanna](https://www.linkedin.com/in/emma-bou-hanna/) & me (Sebastian Partarrieu) for the [Computational Statistics course](https://www.master-mva.com/cours/computational-statistics/) of the MVA master's degree._
