@@ -8,9 +8,10 @@ category: work
 github: https://github.com/SebastianPartarrieu/mines_strat_gaz_nat
 ---
 
-This [project](https://github.com/SebastianPartarrieu/mines_strat_gaz_nat) was carried out during a computer science course within the Mines ParisTech Cycle Ingénieur Civil and in collaboration with [E_Cube](https://www.linkedin.com/company/e-cube-strategy-consultants/) (a consultancy specialized in the energy sector) along with two other students of Mines ParisTech.
+This [project](https://github.com/SebastianPartarrieu/mines_strat_gaz_nat) in collaboration with [E_Cube](https://www.linkedin.com/company/e-cube-strategy-consultants/) (a consultancy specialized in the energy sector) along with two other students of Mines ParisTech.
 
 ## Problem statement
+
 Natural gas distribution infrastructures aren't able to service the whole of France's territory on a moment's notice. Thus, adequate storage facilities are crucial in order to ensure the seasonal fuel's availability during the entire year and across France. These storage facilities are often large underground reservoirs (aquifers or salt caverns) and can be purchased by independent entities -during a state-sponsored auction- looking to buy, store and resell natural gas.
 
 This so-called trader has to comply with a number of external constraints, both physical and political. For example, physical constraints on the undergound reservoirs include having to maintain a certain quantity of fuel inside or else it might shrink. Another is the maximal input and output rates of gas from the storage facility. More political in nature, regulation forces the trader to have a large propotion of his reservoir filled at the beginning of winter and more generally dictates minimal and maximal quantities the trader is allowed to store at different moments during the year.
@@ -39,7 +40,8 @@ This project proposes an end-to-end solution to valuate a certain storage facili
     Project workflow
 </div>
 
-We also built a relatively simple web app (that you can access locally once you've cloned the github) to view the results, here is what some of the views look like: 
+We also built a relatively simple web app (that you can access locally once you've cloned the github) to view the results, here is what some of the views look like:
+
 <div class="row">
     <div class="col-sm mt-3 mt-md-0">
         <img class="img-fluid rounded z-depth-1" src="{{ '/assets/img/spot_forward_prices.png' | relative_url }}" alt="" title="example image"/>
