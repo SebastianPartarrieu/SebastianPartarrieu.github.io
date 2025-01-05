@@ -173,6 +173,8 @@
           
           
           
+          
+          
           <li class="nav-item ">
               <a class="nav-link" href="/projects/">
                 Projects
@@ -238,9 +240,11 @@
 
   <article>
     <h2 id="a-brief-overview">A brief overview</h2>
+
 <p>This <a href="https://github.com/SebastianPartarrieu/MOVIE_Projet" target="_blank" rel="noopener noreferrer">project</a> was conducted over a little less than two months, in collaboration with three other Mines ParisTech students. We built an interactive Virtual Reality (VR) application with <a href="https://unity.com/" target="_blank" rel="noopener noreferrer">Unity</a> allowing the user to navigate between different locations, each taking on the look &amp; feel of a great artist. Once the user was plunged ‘into’ this 3D version of a painting, he/she plays a short game, trying to guess which artist was used to generate the environment. Once the user guesses correctly, the style slowly changes to a new artist and this goes on until the user has guessed all the styles and environments we’ve prepared. The immersive experience is meant to be a contemplative one, where one can take time to appreciate the visual qualities of one’s surroundings.</p>
 
 <p>Here’s a short video including images and gameplay sequences from the application:</p>
+
 <div class="row">
     <div class="col-sm mt-3 mt-md-0">
     <iframe height="338" width="676" src="https://www.youtube.com/embed/FhrUkyMkoBw" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen=""></iframe>
@@ -248,7 +252,9 @@
 </div>
 
 <h2 id="technical-aspects">Technical aspects</h2>
+
 <p>The general workflow for the project goes as follows:</p>
+
 <ul>
   <li>Pick a 360° picture of a real place</li>
   <li>Apply different style transfer algorithms (CycleGAN, fast neural style transfer, ‘classic’ style transfer) and compare results</li>
@@ -259,6 +265,7 @@
 <p>Of course, these steps (surprisingly, even the first one) take time and effort and perhaps warrant some explanations. I’ll detail the style transfer step as I spent most of my time during the project working on this, as well as finding it to be the most challenging/interesting part of the project.</p>
 
 <h3 id="style-transfer">Style transfer</h3>
+
 <p>This is what I primarily worked on during the project. The first algorithm used was an adapted and re-trained <a href="https://github.com/junyanz/pytorch-CycleGAN-and-pix2pix" target="_blank" rel="noopener noreferrer">CycleGAN</a> deep learning algorithm to perform the style transfer. I first had to download a sufficiently large dataset of 360° images, which is where Flickr’s API along with a short python script came in very handy. Then I had to find datasets of paintings of the various artists we wanted to use for the style transfer. I also performed some data augmentation on the paintings for artists where we couldn’t find a sufficient amount of paintings (minimal rotations, shifts &amp; other transformations). Once the images were all cleaned up and ready to go, I could finally start tweaking Cycle GAN’s architecture and retraining it from scratch in order to generate the best results possible. If you aren’t familiar with GANs check this very informative <a href="https://towardsdatascience.com/understanding-generative-adversarial-networks-gans-cd6e4651a29" target="_blank" rel="noopener noreferrer">blog post</a>, before reading <a href="https://machinelearningmastery.com/what-is-cyclegan/" target="_blank" rel="noopener noreferrer">this one</a> on cycle gans. Hopefully, then, this image won’t come as a surprise:</p>
 
 <div class="row">
@@ -288,6 +295,7 @@
 <p>Aside from picking the datasets and doing some preprocessing and data augmentation, I also tried changing some architectural parameters of the CycleGAN. This consisted in adding some convolutional layers and residual blocks, the added convolutions with stride 2 to downsample the images further (as we were working with larger images than the authors) and residual blocks just to make sure we couldn’t drive up performance further. Of course, here, performance is a tricky question. You would like to think that properly trained discriminators ensure that with enough epochs, CycleGAN gives you a satisfactory mapping and adequate style transfer capabilities.</p>
 
 <p>Of course, there are multiple limitations to this approach. The first is that on large images such as the ones used during this project, the PatchGAN discriminator means that you only need to fool the discriminator locally. This brings about repeated motifs once we apply G to the 360° images after training that seem to be the result of this patched approach.</p>
+
 <div class="row justify-content-sm-center">
     <div class="col-sm-8 mt-3 mt-md-0">
         <img class="img-fluid rounded z-depth-1" src="/assets/img/ok_miami1_fake_ukiyoe.png" alt="" title="example image">
@@ -403,12 +411,12 @@
     
 <footer class="sticky-bottom mt-5">
   <div class="container">
-    © Copyright 2024 Sebastian A. Partarrieu.
+    © Copyright 2025 Sebastian A. Partarrieu.
     Powered by <a href="http://jekyllrb.com/" target="_blank" rel="noopener noreferrer">Jekyll</a> with <a href="https://github.com/alshedivat/al-folio" target="_blank" rel="noopener noreferrer">al-folio</a> theme. Hosted by <a href="https://pages.github.com/" target="_blank" rel="noopener noreferrer">GitHub Pages</a>.
 
     
     
-    Last updated: October 21, 2024.
+    Last updated: January 05, 2025.
     
   </div>
 </footer>
