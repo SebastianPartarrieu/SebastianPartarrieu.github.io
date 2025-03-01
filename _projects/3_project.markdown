@@ -1,9 +1,9 @@
 ---
 layout: page
 title: MonQuartier
-description: A mobile application allowing customers to discover small local stores and their current discounts and offers.
+description: A mobile app to discover local stores
 img: /assets/img/mon_quartier_logo.png
-importance: 3
+importance: 4
 category: work
 github: https://github.com/SebastianPartarrieu/Promotion
 ---

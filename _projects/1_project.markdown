@@ -1,9 +1,9 @@
 ---
 layout: page
-title: Natural Gas Storage Valuation
-description: Three complementary modules to properly valuate a natural gas storage facility.
+title: NG Storage Valuation
+description: Valuate a natural gas storage facility
 img: /assets/img/e_cube.jpg
-importance: 4
+importance: 5
 category: work
 github: https://github.com/SebastianPartarrieu/mines_strat_gaz_nat
 ---

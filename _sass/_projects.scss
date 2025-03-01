@@ -1,0 +1,43 @@
+.project-image-container {
+  width: 100%;
+  height: 200px; // You can adjust this value to your preferred height
+  overflow: hidden;
+  position: relative;
+}
+
+.project-image-container img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
+}
+
+
+.projects.grid {
+  .grid-item {
+    .project-image-container {
+      width: 100% !important;
+      height: 250px !important; // Increased height for better visibility
+      overflow: hidden !important;
+      position: relative !important;
+      background: #f0f0f0 !important; // Debug background color
+      
+      img {
+        width: 100% !important;
+        height: 100% !important;
+        object-fit: cover !important;
+        object-position: center !important;
+      }
+    }
+    
+    .card {
+      height: 100%;
+      
+      &.hoverable {
+        .card-body {
+          padding: 15px;
+        }
+      }
+    }
+  }
+} 

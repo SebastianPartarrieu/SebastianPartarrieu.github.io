@@ -1,9 +1,9 @@
 ---
 layout: page
 title: Through artists' eyes
-description: A VR application powered by deep learning built to plunge users into the fascinating worlds of art.
+description: A VR application powered by deep learning built to plunge users into the fascinating worlds of art
 img: /assets/img/through_artists_eyes.png
-importance: 2
+importance: 3
 category: work
 github: https://github.com/SebastianPartarrieu/ThroughArtistsEyes
 ---

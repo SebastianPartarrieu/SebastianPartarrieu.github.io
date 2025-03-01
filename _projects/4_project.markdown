@@ -1,9 +1,9 @@
 ---
 layout: page
 title: Graph Transformers
-description: A deep dive into GTs, what has motivated the architecture, how they work and the limitations.
+description: A deep dive into GTs
 img: /assets/img/cluster_example.png
-importance: 1
+importance: 2
 category: work
 bibliography: graph_transformers.bib
 github: https://github.com/SebastianPartarrieu/graph-transformer-explr/
