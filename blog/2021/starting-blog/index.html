@@ -10,7 +10,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge" />
 
 <title>
-  S. Partarrieu | NG Storage Valuation
+  S. Partarrieu | Starting a blog
 </title>
 <meta name="description" content="" />
 
@@ -65,7 +65,7 @@
 
 <link
   rel="canonical"
-  href="/projects/1_project/"
+  href="/blog/2021/starting-blog/"
 />
 
 <!-- JQuery -->
@@ -142,7 +142,7 @@
           </li>
           
           <!-- Blog -->
-          <li class="nav-item ">
+          <li class="nav-item active">
             <a class="nav-link" href="/blog/">
               Blog
               
@@ -231,66 +231,47 @@
     <!-- Content -->
 
     <div class="container mt-5">
-      <div class="post">
+      <!-- _layouts/post.html -->
+
+
+
+
+
+
+<div class="post">
 
   <header class="post-header">
-    <h1 class="post-title">NG Storage Valuation</h1>
-    <p class="post-description">Valuate a natural gas storage facility</p>
+    <h1 class="post-title">Starting a blog</h1>
+    <p class="post-meta">March 13, 2021</p>
+    <p class="post-tags">
+      <a href="/blog/2021"> <i class="fas fa-calendar fa-sm"></i> 2021 </a>
+      
+
+      
+    </p>
   </header>
 
-  <article>
-    <p>This <a href="https://github.com/SebastianPartarrieu/mines_strat_gaz_nat" target="_blank" rel="noopener noreferrer">project</a> in collaboration with <a href="https://www.linkedin.com/company/e-cube-strategy-consultants/" target="_blank" rel="noopener noreferrer">E_Cube</a> (a consultancy specialized in the energy sector) along with two other students of Mines ParisTech.</p>
+  <article class="post-content">
+    <p><em>Note: originally, the blog was called Ergodicity in Thought.</em></p>
 
-<h2 id="problem-statement">Problem statement</h2>
+<p>Hey there, I hope you’re doing well <img class="emoji" title=":smile:" alt=":smile:" src="https://github.githubassets.com/images/icons/emoji/unicode/1f604.png" height="20" width="20">.</p>
 
-<p>Natural gas distribution infrastructures aren’t able to service the whole of France’s territory on a moment’s notice. Thus, adequate storage facilities are crucial in order to ensure the seasonal fuel’s availability during the entire year and across France. These storage facilities are often large underground reservoirs (aquifers or salt caverns) and can be purchased by independent entities -during a state-sponsored auction- looking to buy, store and resell natural gas.</p>
+<p>I’m not entirely sure why you’re reading this (or why I’m writing this), but I’ll try and convince both of us that it’s worthwhile. If it’s not, I guess I could say you can find comfort in the idea it took me longer to write than you to read. <em>Yet</em> the whole point of these few lines will be to formalize the intuition that structuring one’s thoughts and taking time to express them has intrinsic value.</p>
 
-<p>This so-called trader has to comply with a number of external constraints, both physical and political. For example, physical constraints on the undergound reservoirs include having to maintain a certain quantity of fuel inside or else it might shrink. Another is the maximal input and output rates of gas from the storage facility. More political in nature, regulation forces the trader to have a large propotion of his reservoir filled at the beginning of winter and more generally dictates minimal and maximal quantities the trader is allowed to store at different moments during the year.</p>
+<p>So why the blog and why that somewhat pompous title?</p>
 
-<div class="row">
-    <div class="col-sm mt-3 mt-md-0">
-        <img class="img-fluid rounded z-depth-1" src="/assets/img/nat_gas_workflow.png" alt="" title="example image">
-    </div>
-</div>
-<div class="caption">
-    Natural gas from production to consumption
-</div>
+<p>The reason for starting the blog is hidden in the title so let’s begin with that: <em>Ergodicity in Thought</em>. I first came across <a href="https://en.wikipedia.org/wiki/Ergodic_theory" target="_blank" rel="noopener noreferrer">ergodic systems</a> in a Statistical Physics class @ Mines ParisTech. For those who haven’t, this is (very roughly and with as little formalism as possible) what it means:</p>
 
-<p>Taking all of this into account, it is crucial for the natural gas trader to have access to a trustworthy valuation for the different storage facilities when the state-sponsored auction takes place. This is where this project comes in.</p>
+<p>Say you have a system made up of N ‘things’ (probably particles, let’s be honest). Each of these N particles can take on a certain number of states, let’s call that number P. So if we can tell the N particles apart from each other, we have <em>drumroll</em> \(P^N\) number of, what we call, micro states. This is just the total number of configurations of our system, if we’re looking individually at what particle is in what state. Knowing the system’s micro state means knowing exactly what particles are doing what and odds are this doesn’t hold as soon as your system has a large number of them… Yet, we can still want to measure things about the system, it’s just we’re measuring macroscopic observables that are a sum of individual contributions of particles, each living its own life within the confines of our P possible states.</p>
 
-<h2 id="solution">Solution</h2>
+<p>Ok, you might be wondering, but where on earth does ergodicity come in? Well, firstly it sounds fancy and <a href="https://mathoverflow.net/questions/403036/john-von-neumanns-remark-on-entropy" target="_blank" rel="noopener noreferrer">like entropy</a> I hope the mystery of it all will give me an advantage in any future debate. Second, let’s measure a macroscopic observable of our system, say it’s temperature. For ergodic systems this macroscopic observable can be calculated by taking an average over a certain amount of time or over the number of possible micro states. This means that the temperature we’re measuring over a period of time (short for us but very long in terms of micro state transitions for the system) is equal to the amount we could calculate at one fixed point in time by averaging over the possible micro states.</p>
 
-<p>This project proposes an end-to-end solution to valuate a certain storage facility’s worth. Three main modules were developped in python to tackle this complex problem, the first being a data scrapping module (use of selenium) to go and gather crucial data regarding the French (and other European) natural gas market data. The second computes a number of price diffusion scenarios using the scraped intrinsic market characteristics along with quantitative models specific to commodities markets (heavy use of numpy, scipy and pandas). The third uses the price diffusions to solve the non-linear (and therefore non trivial!) optimisation problem of finding an optimal buying/selling strategy given all the physical and political constraints mentioned above (again, numpy scipy and pandas). Once the multiple optimisations have been solved along the price diffusion scenarios, we can compute useful statistics on the distribution of possible profits generated from the natural gas storage facility. This allows the trader to make an informed decision on what profits he can expect and hence, whether or not to bid for a specific reservoir during the auction.</p>
+<p>After this long detour you might understand what I’m getting at. Essentially, I’d like to think that my very own thought process, the ergodic system, can produce an observable, this blog, which will give over time an equivalent result to a blog produced by averaging over the space of ideas. Basically, I’d like these posts to explore many different ideas and hopefully let me enjoy myself along the way. There’s probably a few flaws in the analogy but I liked the sound of the title and it announces forthwith the color of this blog - a mix of random explorations containing book &amp; paper reviews, discussions on daily habits such as meditation &amp; intermittent fasting, brief overviews of topics such as the climate crisis with, of course, some technical mathy posts here and there to keep it spicy.</p>
 
-<div class="row">
-    <div class="col-sm mt-3 mt-md-0">
-        <img class="img-fluid rounded z-depth-1" src="/assets/img/project_workflow.png" alt="" title="example image">
-    </div>
-</div>
-<div class="caption">
-    Project workflow
-</div>
-
-<p>We also built a relatively simple web app (that you can access locally once you’ve cloned the github) to view the results, here is what some of the views look like:</p>
-
-<div class="row">
-    <div class="col-sm mt-3 mt-md-0">
-        <img class="img-fluid rounded z-depth-1" src="/assets/img/spot_forward_prices.png" alt="" title="example image">
-    </div>
-    <div class="col-sm mt-3 mt-md-0">
-        <img class="img-fluid rounded z-depth-1" src="/assets/img/diffusion_prix.png" alt="" title="example image">
-    </div>
-    <div class="col-sm mt-3 mt-md-0">
-        <img class="img-fluid rounded z-depth-1" src="/assets/img/profits_gen.png" alt="" title="example image">
-    </div>
-</div>
-<div class="caption">
-    On the left, historical spot and forward prices scraped from the internet using our first module. In the middle, a single price diffusion scenario and the corresponding optimal volume of gas inside the reservoir to maximize revenue within the set of constraints. Finally, on the right, the profit distribution generated from the multiple optimisations conducted on the large number of price diffusions generated.
-</div>
-
-<p>For those of you that have the time and want a more in-depth explanation of how all of this works, go see our github repository’s <a href="https://github.com/paplessix/mines_strat_gaz_nat/wiki" target="_blank" rel="noopener noreferrer">wiki</a>. Details of the actual algorithms used, as well as an installation guide and a few tips are all available there!</p>
 
   </article>
+
+  
 
 </div>
 
